@@ -38,9 +38,12 @@
     #wrapper.karl-side-menu-open {
         left: 260px;
     }
+
     .top_logo a img {
-        max-width: 80px;
+        max-width: 160px;
+        margin: auto;
     }
+
     .cart > a {
         font-size: 12px;
     }
@@ -118,7 +121,9 @@
     }
     .shop_grid_product_area,
     .single_product_desc {
-        margin-top: 100px;
+        margin-top: 50px;
+        padding-left: 10px;
+        padding-right: 10px;
     }
     .cart_area .update-checkout a,
     .cart_area .back-to-shop a {
@@ -137,9 +142,14 @@
         margin-top: 100px;
         padding: 20px;
     }
+
+    .single_product_desc .widget.size .widget-desc a{
+        margin-right: 0px;
+        margin-left: 0px;
+    }
 }
 
-@media only screen and (min-width: 480px) and (max-width: 767px) {
+@media only screen and (min-width: 480px) and (max-width: 300px) {
     .top_logo a img {
         max-width: 120px;
     }

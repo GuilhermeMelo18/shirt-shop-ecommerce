@@ -4,7 +4,7 @@ $(document).ready(function(){
     
     var $window = $(window);
 
-    // :: 1.0 Fullscreen Active Code
+    //Fullscreen Active Code
     $window.on('resizeEnd', function () {
         $(".full_height").height($window.height());
     });
@@ -18,7 +18,7 @@ $(document).ready(function(){
 
     var welcomeSlide = $('.welcome_slides');
 
-    // :: 2.0 Welcome Slider Active Code
+    //Welcome Slider Active Code
     if ($.fn.owlCarousel) {
         welcomeSlide.owlCarousel({
             items: 1,
@@ -32,7 +32,7 @@ $(document).ready(function(){
         });
     }
 
-    // :: 3.0 Related Product Active Code
+    //Related Product Active Code
     if ($.fn.owlCarousel) {
         $('.you_make_like_slider').owlCarousel({
             items: 3,
@@ -83,7 +83,7 @@ $(document).ready(function(){
         $(this).css('animation-duration', anim_dur);
     });
 
-    // :: 4.0 Testimonials Slider Active Code
+    //Testimonials Slider Active Code
     if ($.fn.owlCarousel) {
         $(".karl-testimonials-slides").owlCarousel({
             items: 1,
@@ -95,13 +95,13 @@ $(document).ready(function(){
         });
     }
 
-    // :: 5.0 Gallery Menu Style Active Code
+    //Gallery Menu Style Active Code
     $('.portfolio-menu button.btn').on('click', function () {
         $('.portfolio-menu button.btn').removeClass('active');
         $(this).addClass('active');
     })
 
-    // :: 6.0 Masonary Gallery Active Code
+    //Masonary Gallery Active Code
     if ($.fn.imagesLoaded) {
         $('.karl-new-arrivals').imagesLoaded(function () {
             // filter items on button click
@@ -122,12 +122,12 @@ $(document).ready(function(){
         });
     }
 
-    // :: 7.0 Header Cart btn Active Code
+    // Header Cart btn Active Code
     $('#header-cart-btn').on('click', function () {
         $('body').toggleClass('cart-data-open');
     })
 
-    // :: 8.0 Side Menu Active Code
+    // Side Menu Active Code
     $('#sideMenuBtn').on('click', function () {
         $('#wrapper').toggleClass('karl-side-menu-open');
     })
@@ -135,7 +135,7 @@ $(document).ready(function(){
         $('#wrapper').removeClass('karl-side-menu-open');
     })
 
-    // :: 9.0 Magnific-popup Video Active Code
+    // Magnific-popup Video Active Code
     if ($.fn.magnificPopup) {
         $('.video_btn').magnificPopup({
             disableOn: 0,
@@ -153,7 +153,7 @@ $(document).ready(function(){
         });
     }
 
-    // :: 10.0 ScrollUp Active Code
+    // ScrollUp Active Code
     if ($.fn.scrollUp) {
         $.scrollUp({
             scrollSpeed: 1000,
@@ -162,7 +162,7 @@ $(document).ready(function(){
         });
     }
 
-    // :: 11.0 Slider Range Price Active Code
+    // Slider Range Price Active Code
     $('.slider-range-price').each(function () {
         var min = $(this).data('min');
         var max = $(this).data('max');
@@ -172,19 +172,18 @@ $(document).ready(function(){
         var label_result = $(this).data('label-result');
         var t = $(this);
         $(this).slider({
-            range: true,
-            min: min,
+            range: "min",
+            min: 44.99,
             max: max,
-            values: [value_min, value_max],
-            slide: function (event, ui) {
-                var result = label_result + " " + unit + ui.values[0] + ' - ' + unit + ui.values[1];
-                console.log(t);
-                t.closest('.slider-range').find('.range-price').html(result);
+            step: 0.01,
+            value: value_max,
+            slide: function( event, ui ) {
+
             }
         });
     })
 
-    // :: 12.0 PreventDefault a Click
+    // PreventDefault a Click
     $("a[href='#']").on('click', function ($) {
         $.preventDefault();
     });
@@ -193,6 +192,99 @@ $(document).ready(function(){
     if ($window.width() > 767) {
         new WOW().init();
     }
+    
+    // :: 14.0 Interactive Active Code
+
+    interact('.draggable')
+    .draggable({
+        // enable inertial throwing
+        inertia: true,
+        // keep the element within the area of it's parent
+        restrict: {
+        restriction: "parent",
+        endOnly: true,
+        elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
+        },
+        // enable autoScroll
+        autoScroll: true,
+
+        // call this function on every dragmove event
+        onmove: dragMoveListener,
+        // call this function on every dragend event
+        onend: function (event) {
+        var textEl = event.target.querySelector('p');
+
+        textEl && (textEl.textContent =
+            'moved a distance of '
+            + (Math.sqrt(Math.pow(event.pageX - event.x0, 2) +
+                        Math.pow(event.pageY - event.y0, 2) | 0))
+                .toFixed(2) + 'px');
+        }
+    });
+
+    function dragMoveListener (event) {
+        var target = event.target,
+            // keep the dragged position in the data-x/data-y attributes
+            x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
+            y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+
+        // translate the element
+        target.style.webkitTransform =
+        target.style.transform =
+        'translate(' + x + 'px, ' + y + 'px)';
+
+        // update the posiion attributes
+        target.setAttribute('data-x', x);
+        target.setAttribute('data-y', y);
+    }
+
+     // this is used later in the resizing and gesture demos
+    window.dragMoveListener = dragMoveListener;
 
 
+    interact('.resize-drag')
+            .draggable({
+                onmove: window.dragMoveListener,
+                restrict: {
+                restriction: 'parent',
+                elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
+                },
+            })
+            .resizable({
+                // resize from all edges and corners
+                edges: { left: true, right: true, bottom: true, top: true },
+
+                // keep the edges inside the parent
+                restrictEdges: {
+                outer: 'parent',
+                endOnly: true,
+                },
+
+                // minimum size
+                restrictSize: {
+                min: { width: 100, height: 50 },
+                },
+
+                inertia: true,
+            })
+            .on('resizemove', function (event) {
+                var target = event.target,
+                    x = (parseFloat(target.getAttribute('data-x')) || 0),
+                    y = (parseFloat(target.getAttribute('data-y')) || 0);
+
+                // update the element's style
+                target.style.width  = event.rect.width + 'px';
+                target.style.height = event.rect.height + 'px';
+
+                // translate when resizing from top or left edges
+                x += event.deltaRect.left;
+                y += event.deltaRect.top;
+
+                target.style.webkitTransform = target.style.transform =
+                    'translate(' + x + 'px,' + y + 'px)';
+
+                target.setAttribute('data-x', x);
+                target.setAttribute('data-y', y);
+            // target.textContent = Math.round(event.rect.width) + '\u00D7' + Math.round(event.rect.height);
+            });
 });

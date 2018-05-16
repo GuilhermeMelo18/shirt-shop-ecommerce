@@ -1,0 +1,106 @@
+
+        <!--  ****************** Product Details Area Start ************************-->
+        <section class="single_product_details_area section_padding_0_100">
+          <div class="container">
+              <div class="row">
+
+                  <div class="col-12 col-md-6 wrapper-image">    
+                      <div class=""></div>                  
+                    <img class="d-block w-100" src={{shirtModelImage}} >
+                    <div class="resize-container d-block">
+                        <div class="resize-drag">
+                            <img src="" alt="" class="image-container">
+                        </div>
+                    </div>
+                  </div>
+
+                  <div class="col-12 col-md-6">
+                      <div class="single_product_desc">
+                          
+                          <div class="row">
+                            <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+                              <h6 class="widget-title">Preço de Venda</h6> 
+                              <h4 class="price"> R$ {{shirtClass.shirtPriceSell}}</h4>
+                            </div>
+                            <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+                                <h6 class="widget-title">Seu Lucro</h6> 
+                                <h4 class="price"> R$ {{shirtClass.shirtGainClient}}</h4>  
+                            </div>
+                          </div>
+                          <div class="widget size price ">
+                            <div class="widget-desc">
+                                <div class="slider-range">
+                                    <div class="range-price ui-slider-horizontal ui-widget ui-widget-content">
+                                        <div class="ui-slider-range ui-widget-header"></div>                             
+                                    </div>
+                                </div>
+                                <p class="widget-subtitle">Arraste e defina aqui seu preço de venda.</p>
+                            </div>
+                          </div>
+
+                          <div class="widget size ">
+                                <h6 class="widget-title">Modelo Principal</h6>
+                                <div class="widget-desc">
+                                    <ul>
+                                        <li (click)="changeShirt('MAN','WHITE')" ><a><img src="img/amostra-shirt/icon-man.png" alt=""></a></li>
+                                        <li (click)="changeShirt('GIRL','WHITE')" ><a><img src="img/amostra-shirt/icon-girl.png" alt=""></a></li>
+                                    </ul>
+                                </div>
+                          </div>
+  
+                          <div class="widget size">
+                              <h6 class="widget-title">Cores</h6>
+                              <div class="widget-desc">
+                                  <ul>
+                                      <li (click)="changeShirt('none','BLACK')" ><a ><img src="img/amostra-shirt/select-shirt-black.png" alt=""></a></li>
+                                      <li (click)="changeShirt('none','WHITE')" ><a ><img src="img/amostra-shirt/select-shirt-white.png" alt=""></a></li>
+                                      <li (click)="changeShirt('none','BLUE')" ><a ><img src="img/amostra-shirt/select-shirt-blue.png" alt=""></a></li>
+                                      <li (click)="changeShirt('none','GREY')" ><a ><img src="img/amostra-shirt/select-shirt-grey.png" alt=""></a></li>
+                                      <li (click)="changeShirt('none','ORANGE')" ><a ><img src="img/amostra-shirt/select-shirt-orange.png" alt=""></a></li>
+                                      <li (click)="changeShirt('none','RED')" ><a ><img src="img/amostra-shirt/select-shirt-red.png" alt=""></a></li>                                      
+                                  </ul>
+                              </div>
+                          </div>
+
+                          
+                          <div class="widget size">
+                            
+                            <h6 class="widget-title">Enviar sua imagem</h6>
+                            <label class="fileContainer">         
+                                <p class="widget-subtitle">Clique ou Arraste para enviar sua estampa.</p>
+                                <input type="file" (change)="readImage($event)"/>
+                            </label>
+                         </div>
+
+                         <div class="widget size">
+                            
+                            <h6 class="widget-title">Título da Estampa</h6>   
+                            <input type="text" class="titleShirt"/>
+                         </div>
+
+                         <div class="widget size">
+                            <h6 class="widget-title">Categoria</h6>
+                            <div class="scrollBox">
+                                <div class="form-group">
+                                    <div *ngFor="let option of utilShirt.optionsTags">
+                                        <label [style.backgroundColor]= option.value >
+                                            <input  type="checkbox"
+                                                   name="options"
+                                                   value="{{option.value}}"
+                                                   [(ngModel)]="option.checked"/>
+                                            {{option.name}}
+                                        </label>
+                                    </div>
+                                </div>
+
+                            </div>                            
+                         </div>
+
+                       
+
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+      <!--  ****************** Product Details Area End ************************-->

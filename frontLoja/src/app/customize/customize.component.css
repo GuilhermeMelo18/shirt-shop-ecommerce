@@ -1,0 +1,133 @@
+.single_product_details_area{
+    margin-top: 50px;
+}
+
+.single_product_desc{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.widget.size{
+    margin-top: 32px;
+    border-bottom: 2px solid #ebebeb;
+    padding-top: 0px;
+    padding-bottom: 32px;
+}
+
+.single_product_desc{
+    text-align: center;
+}
+
+.w-90{
+    width: 91%!important;
+}
+
+.fileContainer {
+    overflow: hidden;
+    position: relative;
+    width: 80%;
+    height: 100px;
+    text-align: center;
+    border: 2px dashed #92b0b3;
+    cursor: pointer;
+    border-radius: 5px;
+    -webkit-transition: width 0.3s;
+    
+}
+
+.fileContainer:hover {
+    width: 78%;
+    background-color: aliceblue;
+}
+
+.fileContainer [type=file] {
+    cursor: inherit;
+    display: block;
+    font-size: 999px;
+    filter: alpha(opacity=0);
+    min-height: 100%;
+    min-width: 100%;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: 0;
+}
+
+
+.resize-container{
+    width: 41%;
+    height: 55%;
+    position: absolute;
+    top: 21%;
+    left: 29%;
+}
+
+
+.resize-container img{
+    width:100%; 
+    height:100%;
+}
+
+
+.resize-drag {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+}
+
+.wrapper-image{
+    position: relative;
+    height: 90%;    
+}
+
+/* Box styles */
+.scrollBox {
+    border: 1px dashed #92b0b3; 
+    border-radius: 5px;
+    width: 80%;
+    height: 100px;
+    padding: 2px 2px 2px ;
+    text-align: left;
+    overflow-y: scroll;
+    margin: auto;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+width: 12px;
+height: 12px;
+}
+
+::-webkit-scrollbar-track {
+border: 1px solid black;
+border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+background: black;  
+border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+background: #92b0b3;  
+}
+
+.scrollBox .form-group label{
+
+    width: 100%;
+    height: 30px;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 0px;
+    padding-top: 6px;
+    padding-left: 8px; 
+    border-radius: 5px;
+}
+
+.widget.size .titleShirt{
+    border: 1px dashed #92b0b3; 
+    width: 80%;
+     border-radius: 5px;
+}

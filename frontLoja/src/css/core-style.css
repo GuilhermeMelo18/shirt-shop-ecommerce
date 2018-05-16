@@ -323,6 +323,11 @@ img {
     border-left: 2px solid #f4f2f8;
 }
 
+.b-t{
+    border: 2px solid #f4f2f8; 
+    border-radius: 20px; 
+}
+
 /* -------------------
     Wrapper CSS
 ------------------- */
@@ -367,6 +372,15 @@ img {
     z-index: 1000;
 }
 
+
+.top_single_area{
+    margin-top: 70px;
+}
+
+.top_logo a img{
+    max-width: 200px;
+    margin-left: 43px;
+}
 .cart > a {
     color: #2e2e2e;
     font-size: 14px;
@@ -510,6 +524,7 @@ img {
 }
 
 .main_header_area {
+    margin-top: 50px;
     height: 110px;
     padding-top: 30px;
 }
@@ -792,6 +807,10 @@ Welcome Area CSS
     color: #fff;
     font-size: 14px;
     margin-bottom: 5px;
+}
+
+.top_catagory_area{
+    margin-top: 1px;
 }
 
 .welcome_slides.owl-carousel .owl-dots {
@@ -1326,6 +1345,10 @@ Quickview Modal Area CSS
     margin-bottom: 30px;
 }
 
+.footer-logo{
+    max-width: 200px;
+    padding-bottom: 50px;
+}
 .footer_social_area > a {
     display: inline-block;
     font-size: 26px;
@@ -1457,6 +1480,21 @@ Quickview Modal Area CSS
     font-size: 14px;
     font-weight: 700;
     text-transform: uppercase;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.widget-subtitle {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-top: 20px;
+}
+
+.widget-price{
+    font-size: 23px;
+    font-weight: 700;
+    text-transform: uppercase;
 }
 
 .widget-desc .custom-control-description {
@@ -1482,6 +1520,10 @@ Quickview Modal Area CSS
 .widget.size .widget-desc a:focus {
     background-color: #ff084e;
     color: #fff;
+}
+
+.widget-desc ul {
+    text-align: center;
 }
 
 .widget.price .ui-slider-handle {
@@ -1704,18 +1746,22 @@ Quickview Modal Area CSS
 .single_product_desc .widget.size .widget-desc a {
     font-size: 12px;
     padding: 0;
-    width: 37px;
-    height: 37px;
-    border: 2px solid #3a3a3a;
+    width: 45px;
+    height: 45px;
     font-weight: 700;
     text-align: center;
     line-height: 33px;
+    border-radius: 35%;
+    cursor: pointer;
+    margin-right: 5px;
+    margin-left: 5px;
 }
+
 
 .single_product_desc .widget.size .widget-desc a:hover,
 .single_product_desc .widget.size .widget-desc a:focus {
-    border: 2px solid #ff084e;
-    background-color: #ff084e;
+    border: 2px solid #e6e6e6;
+    background-color: #e6e6e6;
 }
 
 .single_product_desc .widget.size {

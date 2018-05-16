@@ -30,7 +30,9 @@
         "js/bootstrap.min.js",
         "js/plugins.js",
         "js/active.js",
-        "../node_modules/bootstrap-validator/dist/validator.min.js"
+        "../node_modules/bootstrap-validator/dist/validator.min.js",
+        "../node_modules/interactjs/dist/interact.min.js"
+
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
