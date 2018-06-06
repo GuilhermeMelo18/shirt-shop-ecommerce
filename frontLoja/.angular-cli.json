@@ -21,18 +21,18 @@
       "prefix": "app",
       "styles": [
         "styles.css",
-        "css/core-style.css",
-        "css/responsive.css"
+        "assets/css/core-style.css",
+        "assets/css/responsive.css"
       ],
       "scripts": [
-        "js/jquery/jquery-2.2.4.min.js",
-        "js/popper.min.js",
-        "js/bootstrap.min.js",
-        "js/plugins.js",
-        "js/active.js",
+        "assets/js/jquery/jquery-2.2.4.min.js",
+        "assets/js/popper.min.js",
+        "assets/js/bootstrap.min.js",
+        "assets/js/plugins.js",
+        "assets/js/active.js",
         "../node_modules/bootstrap-validator/dist/validator.min.js",
-        "../node_modules/interactjs/dist/interact.min.js"
-
+        "../node_modules/interactjs/dist/interact.min.js",
+        "../node_modules/html2canvas/dist/html2canvas.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

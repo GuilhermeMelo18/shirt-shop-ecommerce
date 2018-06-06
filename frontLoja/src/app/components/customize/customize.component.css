@@ -64,23 +64,26 @@
 }
 
 
-.resize-container img{
-    width:100%; 
-    height:100%;
-}
-
-
 .resize-drag {
     box-sizing: border-box;
     width: 100%;
     height: 100%;
 }
 
-.wrapper-image{
+.resize-drag img{
+    width: 100%;
+    height: 100%;
+}
+
+
+.wrapper-customize{
     position: relative;
     height: 90%;    
 }
 
+.wrapper-image{
+    width: 100%;
+}
 /* Box styles */
 .scrollBox {
     border: 1px dashed #92b0b3; 
@@ -130,4 +133,29 @@ background: #92b0b3;
     border: 1px dashed #92b0b3; 
     width: 80%;
      border-radius: 5px;
+}
+
+
+.button-send-shirt{
+    background-color: #ff596f;
+}
+
+
+.button-send-shirt{
+    width: 80%;
+    height: 60px;
+    border-radius: 0;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 700;
+    line-height: 60px;
+    padding: 0;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.button-send-shirt:hover {
+    background-color: #3a3a3a;
+    color: #fff;
+    font-weight: 700;
 }

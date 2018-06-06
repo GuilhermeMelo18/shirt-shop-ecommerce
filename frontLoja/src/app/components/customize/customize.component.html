@@ -4,14 +4,15 @@
           <div class="container">
               <div class="row">
 
-                  <div class="col-12 col-md-6 wrapper-image">    
-                      <div class=""></div>                  
-                    <img class="d-block w-100" src={{shirtModelImage}} >
-                    <div class="resize-container d-block">
-                        <div class="resize-drag">
-                            <img src="" alt="" class="image-container">
+                  <div class="col-12 col-md-6 wrapper-customize" >                  
+                    <div class="wrapper-image" id="wrapper-image">
+                        <img class="d-block w-100" src={{shirtModelImage}}>
+                        <div class="resize-container d-block">
+                            <div class="resize-drag">
+                                <img src="" alt="" class="image-container">
+                            </div>
                         </div>
-                    </div>
+                    </div>    
                   </div>
 
                   <div class="col-12 col-md-6">
@@ -42,8 +43,8 @@
                                 <h6 class="widget-title">Modelo Principal</h6>
                                 <div class="widget-desc">
                                     <ul>
-                                        <li (click)="changeShirt('MAN','WHITE')" ><a><img src="img/amostra-shirt/icon-man.png" alt=""></a></li>
-                                        <li (click)="changeShirt('GIRL','WHITE')" ><a><img src="img/amostra-shirt/icon-girl.png" alt=""></a></li>
+                                        <li (click)="changeShirt('MAN','WHITE')" ><a><img src="assets/img/amostra-shirt/icon-man.png" alt=""></a></li>
+                                        <li (click)="changeShirt('GIRL','WHITE')" ><a><img src="assets/img/amostra-shirt/icon-girl.png" alt=""></a></li>
                                     </ul>
                                 </div>
                           </div>
@@ -52,12 +53,12 @@
                               <h6 class="widget-title">Cores</h6>
                               <div class="widget-desc">
                                   <ul>
-                                      <li (click)="changeShirt('none','BLACK')" ><a ><img src="img/amostra-shirt/select-shirt-black.png" alt=""></a></li>
-                                      <li (click)="changeShirt('none','WHITE')" ><a ><img src="img/amostra-shirt/select-shirt-white.png" alt=""></a></li>
-                                      <li (click)="changeShirt('none','BLUE')" ><a ><img src="img/amostra-shirt/select-shirt-blue.png" alt=""></a></li>
-                                      <li (click)="changeShirt('none','GREY')" ><a ><img src="img/amostra-shirt/select-shirt-grey.png" alt=""></a></li>
-                                      <li (click)="changeShirt('none','ORANGE')" ><a ><img src="img/amostra-shirt/select-shirt-orange.png" alt=""></a></li>
-                                      <li (click)="changeShirt('none','RED')" ><a ><img src="img/amostra-shirt/select-shirt-red.png" alt=""></a></li>                                      
+                                      <li (click)="changeShirt('none','BLACK')" ><a ><img src="assets/img/amostra-shirt/select-shirt-black.png" alt=""></a></li>
+                                      <li (click)="changeShirt('none','WHITE')" ><a ><img src="assets/img/amostra-shirt/select-shirt-white.png" alt=""></a></li>
+                                      <li (click)="changeShirt('none','BLUE')" ><a ><img src="assets/img/amostra-shirt/select-shirt-blue.png" alt=""></a></li>
+                                      <li (click)="changeShirt('none','GREY')" ><a ><img src="assets/img/amostra-shirt/select-shirt-grey.png" alt=""></a></li>
+                                      <li (click)="changeShirt('none','ORANGE')" ><a ><img src="assets/img/amostra-shirt/select-shirt-orange.png" alt=""></a></li>
+                                      <li (click)="changeShirt('none','RED')" ><a ><img src="assets/img/amostra-shirt/select-shirt-red.png" alt=""></a></li>                                      
                                   </ul>
                               </div>
                           </div>
@@ -75,7 +76,7 @@
                          <div class="widget size">
                             
                             <h6 class="widget-title">Título da Estampa</h6>   
-                            <input type="text" class="titleShirt"/>
+                            <input [(ngModel)]="shirtClass.titleShirt" type="text" class="titleShirt"/>
                          </div>
 
                          <div class="widget size">
@@ -91,13 +92,15 @@
                                             {{option.name}}
                                         </label>
                                     </div>
-                                </div>
-
+                                </div>   
                             </div>                            
                          </div>
-
-                       
-
+                         <div class="form-group col-12 mb-3">
+                            <button (click)="salveShirt()" class="btn button-send-shirt mt-30">Enviar</button>
+                            <p></p>
+                            <p  class="widget-subtitle" style="color: deeppink">{{messageCampos}}</p>
+                          </div>
+                        
                       </div>
                   </div>
               </div>

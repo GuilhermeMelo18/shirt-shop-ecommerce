@@ -1347,8 +1347,8 @@ Quickview Modal Area CSS
 
 .footer-logo{
     max-width: 200px;
-    padding-bottom: 50px;
 }
+
 .footer_social_area > a {
     display: inline-block;
     font-size: 26px;
@@ -2072,11 +2072,12 @@ Quickview Modal Area CSS
 ----------------------- */
 
 .checkout_details{
-    padding-left: 60px;
-    padding-right: 60px;
+    padding: 20px;
 }
 
-
+.checkout_details_area{
+    padding: 30px;
+}
 .checkout_details_area form label {
     font-size: 12px;
     text-transform: uppercase;

@@ -11,16 +11,9 @@ export class AppComponent {
   
   
   constructor(){
-
-
   }
-  
 
   ngOnInit() {
-    $(".new").click(function(){
-      alert("Clicado");
-    });
-
   }
 
 }

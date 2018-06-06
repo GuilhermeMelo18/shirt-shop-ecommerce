@@ -31,6 +31,7 @@
     line-height: 60px;
     padding: 0;
     border-radius: 30px;
+    cursor: pointer;
 }
 
 .button-cadastro:hover,
@@ -66,4 +67,12 @@
     display: inline-block;
     margin-top: 10px;
     color: #60636a;
+}
+
+.ng-valid[required], .ng-valid.required  {
+    border-left: 2px solid #42A948; /* green */
+  }
+
+.ng-invalid:not(form):focus  {
+    border-left: 2px solid #a94442; /* red */
 }

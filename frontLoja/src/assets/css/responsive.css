@@ -22,9 +22,7 @@
         padding: 15px;
         background-color: #f4f2f8;
     }
-    .single_footer_area {
-        margin-bottom: 100px;
-    }
+
     .welcome_slide_text > h2,
     .single_catagory_area h2 {
         font-size: 50px;
@@ -78,8 +76,20 @@
         background-color: #f4f2f8;
         margin-bottom: 30px;
     }
+
+    
     .single_footer_area {
-        margin-bottom: 100px;
+        margin-bottom: 70px;
+        text-align: center;
+    }
+
+    .footer-logo{
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .footer-logo  img{
+        max-width: 60%;
     }
     .footer_social_area > a {
         font-size: 18px;

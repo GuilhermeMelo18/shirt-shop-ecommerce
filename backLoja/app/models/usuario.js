@@ -2,12 +2,11 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
  
 var UsuarioSchema = new Schema({
-    nome: String,
     email: String,
-    senha: String,  
-    amigos: [{
-        type : Schema.Types.ObjectId, ref: 'usuario'
-    }]
+    password: String,
+    nameUser: String,
+    imageUser: String,
+    imageSite: String
 
 });
  

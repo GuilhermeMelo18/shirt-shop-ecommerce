@@ -4,14 +4,15 @@ export class Shirt{
     titleShirt: string;
     modelShirt: string;
     colorShirt: string;
-    imgImage: string;
+    imgShirt: string;
     imgPicture: string;
     shirtPriceSell: string;
     shirtGainClient : string;
     arrayTags: Array<string>;
 
     constructor(){
-
+        this.arrayTags = new Array();
+        this.clientId = "1";
     }
 
 }

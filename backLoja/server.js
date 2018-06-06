@@ -1,9 +1,8 @@
-/**
+﻿/**
  * Arquivo: server.js
  * Descrição: Arquivo responsável por levantar o serviço do Node.Js para poder
  * executar a aplicação e a API através do Express.Js.
- * Author: Glaucia Lemos
- * Data de Criação: 13/10/2016
+ * Author: Guilherme Melo
  */
  
 //Base do Setup da Aplicação:
@@ -61,7 +60,8 @@ var router = express.Router();
  
 /* Middleware para usar em todos os requests enviados para a nossa API- Mensagem Padrão */
 router.use(function(req, res, next) {
-    console.log('Algo está acontecendo aqui........');
+    console.log('Request:');
+    console.log(req.host);
     next(); //aqui é para sinalizar de que prosseguiremos para a próxima rota. E que não irá parar por aqui!!!
 });
 
