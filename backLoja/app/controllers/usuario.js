@@ -7,7 +7,7 @@ function ClienteController() {
 }
 
 ClienteController.prototype.getAll = function(callback) {
-    
+
     User.find(function (error, usuarios) {
         if (error) {
             callback(null, error);
@@ -76,7 +76,7 @@ ClienteController.prototype.loginFacebook = function(req, callback){
                 user.save(function (error, usuario) {
                     if (error) {
                         callback("Erro Server - Save User", error);
-                    } else {
+                    } else {            
                         callback(usuario);
                     }
                 });

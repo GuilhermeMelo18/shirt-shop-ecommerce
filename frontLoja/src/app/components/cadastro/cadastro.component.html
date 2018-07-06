@@ -22,13 +22,13 @@
                             <div class="form-group col-12 mb-3">     
                               <label for="inputEmail" class="control-label">Email <span>*</span></label>
                               <input type="email" class="form-control"  [(ngModel)]="userSignUp.email" id="inputEmail" formControlName="email" name="emailUser" placeholder="Email" data-error="Digite um Email Válido" required>
-                              <div class="help-block with-errors"></div>
+                              <div class="help-block with-errors" style="color: red; font-size: 15px;"></div>
                             </div>
                             
                             <div class="form-group col-12 mb-3">
                               <label for="inputPassword" class="control-label">Senha <span>*</span></label>
                               <input type="password" data-minlength="6" class="form-control"  [(ngModel)]="userSignUp.password" formControlName="password" name="passwordUser" id="inputPassword" placeholder="Password" required>
-                              <div class="help-block">Mínimo 6 caracteres</div>
+                              <div class="help-block" style="color: red; font-size: 15px;">Mínimo 6 caracteres</div>
                             </div>
 
                             <div class="form-group col-12 mb-3">
@@ -43,30 +43,33 @@
 
             <div class="checkout_details col-12 col-md-6">
                     <div class="checkout_details_area mt-20 clearfix b-t">
-  
+
                             <div class="cart-page-heading">
                                 <h5>Login</h5>
                                 <p>Faça o Login e Acesse sua Loja.</p>
                             </div>
-        
+                           
                             <form data-toggle="validator" role="form" [formGroup]="formLogin">
                                 <div class="row">
-                    
+                                   
                                     <div class="form-group col-12 mb-3">     
                                       <label for="inputEmail" class="control-label">Email <span>*</span></label>
-                                      <input type="email" class="form-control" [(ngModel)]="userSignIn.email" id="inputEmailLogin" name="emailUserLogin" formControlName="email" placeholder="Email" data-error="Digite um Email Válido" required>
-                                      <div class="help-block with-errors"></div>
+                                      <input type="email" class="form-control" [(ngModel)]="userSignIn.email" (keyup)="hideMessageLogin($event)" id="inputEmailLogin"
+                                       name="emailUserLogin" formControlName="email" placeholder="Email" data-error="Digite um Email Válido" required>
+                                      <div class="help-block with-errors" style="color: red; font-size: 15px;"></div>
                                     </div>
                                     
                                     <div class="form-group col-12 mb-3">
                                       <label for="inputPassword" class="control-label">Senha <span>*</span></label>
-                                      <input type="password" data-minlength="6" class="form-control" [(ngModel)]="userSignIn.password"  name="passwordUserLogin" formControlName="password" id="inputPasswordLogin" placeholder="Password" required>
+                                      <input type="password" data-minlength="6" class="form-control" [(ngModel)]="userSignIn.password"  (keyup)="hideMessageLogin($event)"
+                                       name="passwordUserLogin" formControlName="password" id="inputPasswordLogin" placeholder="Password" required>
                                     </div>
-        
                                     <div class="form-group col-12 mb-3">
-                                      <button type="submit" class="btn button-cadastro mt-30" (click)="signInUser()" > Login </button>
+                                        <div *ngIf="errorLogin" class="message-error-login">
+                                            Email ou Senha Inválidos
+                                        </div>
+                                        <button type="submit" class="btn button-cadastro mt-30" (click)="signInUser()" > Login </button>
                                     </div>
-        
                                     <div class="form-group col-12 mb-3 ">
                                         <div class="separator">
                                             <span>OU</span>

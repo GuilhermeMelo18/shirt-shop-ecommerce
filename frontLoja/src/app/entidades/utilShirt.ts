@@ -35,13 +35,13 @@ export class UtilShirt{
 
     //Options Tags Shirts
     optionsTags = [
-          {name:'Geek', value:'#f0f8ff', checked:false},
-          {name:'Esporte', value:'#92b0b3', checked:false},
-          {name:'Cultura-Pop', value:'#f0f8ff', checked:false},
-          {name:'Pets', value:'#92b0b3', checked:false},
-          {name:'Artística', value:'#f0f8ff', checked:false},
-          {name:'Frases', value:'#92b0b3', checked:false},
-          {name:'Abstrato', value:'#f0f8ff', checked:false}
+          {name:'Geek', value:'#f0f8ff', checked:false, tag:'GEEK'},
+          {name:'Esporte', value:'#92b0b3', checked:false, tag:'SPORT'},
+          {name:'Musica', value:'#f0f8ff', checked:false, tag:'MUSIC'},
+          {name:'Pets', value:'#92b0b3', checked:false, tag:'PET'},
+          {name:'Artística', value:'#f0f8ff', checked:false, tag:'ART'},
+          {name:'Frases', value:'#92b0b3', checked:false, tag:'PHRASE'},
+          {name:'Abstrato', value:'#f0f8ff', checked:false, tag:'ABSTRACT'}
       ];
 
 }

@@ -1,0 +1,19 @@
+.single_product_details_area{
+
+    margin-top: 50px;
+} 
+
+
+.cart-submit:hover{
+    background-color: black;
+}
+
+.quantity{
+    margin-left: 20px;
+}
+
+.coupon-code-area, .cart-total-area, 
+.single_product_desc{
+    padding-right: 4%;
+    padding-left: 4%;
+}

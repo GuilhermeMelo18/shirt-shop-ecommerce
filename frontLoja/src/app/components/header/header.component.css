@@ -1,0 +1,10 @@
+.nav-item a{
+    -webkit-transition-duration: 500ms;
+    transition-duration: 500ms;
+    font-weight: 600;
+}
+
+.nav-item a:hover {
+    font-size: 100%;
+    color:#ff084e;
+}

@@ -24,6 +24,7 @@ var port = process.env.PORT || 8000;
 //Iniciando o Servidor (Aplicação):
 //==============================================================
 app.listen(port);
+app.disable('x-powered-by');
 console.log('Iniciando a aplicação na porta ' + port);
 
 
@@ -31,15 +32,12 @@ console.log('Iniciando a aplicação na porta ' + port);
 //Configuração Base da Aplicação:
 //====================================================================================
 var mongoose = require('mongoose'); 
- 
+
 mongoose.connect('mongodb://localhost:27017/admin');
  
 var Usuario = require('./app/models/usuario');
 
-//Rotas da nossa API:
-//==============================================================
- 
-// Add headers
+// Configuração dos Headers
 app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
@@ -55,7 +53,31 @@ app.use(function (req, res, next) {
     next();
 });
 
-/* Aqui o 'router' irá pegar as instâncias das Rotas do Express */
+/*Configuração Para Salvar Sessões do Usuário*/
+var session = require('express-session');
+var MongoDBStore = require('connect-mongodb-session')(session);
+ 
+var store = new MongoDBStore({
+  uri: 'mongodb://localhost:27017/admin',
+  collection: 'lojaSessions'
+});
+ 
+app.use(require('express-session')({
+  secret: '2ejlq32wlj23dqjledq',
+  cookie: {
+    maxAge: 60 * 60 * 1000  // 1 hour
+  },
+  store: store,
+  resave: true,
+  saveUninitialized: false
+}));
+
+
+
+//Rotas da nossa API:
+//==============================================================
+ 
+/* Configuração das Rotas do Express */
 var router = express.Router();
  
 /* Middleware para usar em todos os requests enviados para a nossa API- Mensagem Padrão */
@@ -68,3 +90,6 @@ router.use(function(req, res, next) {
 /* Todas as nossas rotas serão prefixadas com '/api' */
 app.use('/api', router);
 app.use('/api/users', require('./app/routers/usuario'));
+app.use('/api/camisas', require('./app/routers/camisas'))
+
+

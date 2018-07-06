@@ -84,55 +84,11 @@
 .wrapper-image{
     width: 100%;
 }
-/* Box styles */
-.scrollBox {
-    border: 1px dashed #92b0b3; 
-    border-radius: 5px;
-    width: 80%;
-    height: 100px;
-    padding: 2px 2px 2px ;
-    text-align: left;
-    overflow-y: scroll;
-    margin: auto;
-}
-
-/* Scrollbar styles */
-::-webkit-scrollbar {
-width: 12px;
-height: 12px;
-}
-
-::-webkit-scrollbar-track {
-border: 1px solid black;
-border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb {
-background: black;  
-border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-background: #92b0b3;  
-}
-
-.scrollBox .form-group label{
-
-    width: 100%;
-    height: 30px;
-    font-size: 14px;
-    font-weight: 700;
-    text-transform: uppercase;
-    margin-bottom: 0px;
-    padding-top: 6px;
-    padding-left: 8px; 
-    border-radius: 5px;
-}
 
 .widget.size .titleShirt{
     border: 1px dashed #92b0b3; 
     width: 80%;
-     border-radius: 5px;
+    border-radius: 5px;
 }
 
 
@@ -159,3 +115,53 @@ background: #92b0b3;
     color: #fff;
     font-weight: 700;
 }
+
+.widget.size .widget-desc a {
+    font-size: 12px;
+    padding: 0;
+    width: 50px;
+    height: 45px;
+    font-weight: 700;
+    line-height: 33px;
+    border-radius: 35%;
+    cursor: pointer;
+}
+
+.categ-list{
+    padding: 0% 8% 0% 11%;
+}
+.scrollBox li{
+    padding: 1%;
+}
+/* Box styles */
+.scrollBox {
+    text-align: left;
+    overflow-y: scroll;
+    height: 90px;
+    border-radius: 10px;
+    border: 1px dashed #92b0b3;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: black;  
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #92b0b3;  
+}
+
+    
+
+

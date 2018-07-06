@@ -150,7 +150,7 @@ export class CustomizeComponent implements OnInit {
 
     this.utilShirt.optionsTags.forEach(element => {
         if(element.checked==true){
-          this.shirtClass.arrayTags.push(element.name);
+          this.shirtClass.arrayTags.push(element.tag);
         }
     });
     

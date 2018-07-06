@@ -1,0 +1,49 @@
+.img-icon-menu{
+
+    width: 30%;
+    height: 88px;
+    margin-left: 6%;
+    border-radius: 62px;
+}
+
+.img-icon-menu img{
+    width: 100%;
+    height: 100%;
+    border-radius: 62px;
+}
+
+.list-info-user{
+    margin-left: 6%;
+}
+
+
+.list-info-user li{
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.list-info-user a{
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #595959;
+    -webkit-transition-duration: 500ms;
+    transition-duration: 500ms;
+    font-weight: 600;
+}
+
+.list-info-user a:hover {
+    margin-left: 5px;
+}
+
+.list-info-user .btn-sair{
+    background-color: #ff596f;
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.list-info-user .btn-sair:hover{
+    background-color: black;
+}

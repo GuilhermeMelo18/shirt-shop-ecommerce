@@ -5,6 +5,8 @@ import { routes, partialComponents} from './/app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule } from '@angular/common/http';
 import { environment } from '../environments/environment';
+import { FacebookModule } from 'ngx-facebook';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 //Services
 import { UsuarioService } from './services/user.service';
@@ -18,6 +20,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CadastroComponent } from './components/cadastro/cadastro.component';
 import { CustomizeComponent } from './components/customize/customize.component';
+import { ShopComponent } from './components/shop/shop.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 
 
 @NgModule({
@@ -27,14 +31,18 @@ import { CustomizeComponent } from './components/customize/customize.component';
     HeaderComponent,
     FooterComponent,
     CadastroComponent,
-    CustomizeComponent
+    CustomizeComponent,
+    ShopComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
-    HttpClientModule
+    HttpClientModule,
+    FacebookModule.forRoot(),
+    NgxPaginationModule
   ],
   providers: [UsuarioService],
   bootstrap: [AppComponent]

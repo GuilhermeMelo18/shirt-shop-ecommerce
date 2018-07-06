@@ -2,14 +2,14 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/usuario');
 
+
 var ClienteController = require('../controllers/usuario');
 var clienteController = new ClienteController();
 
 
 router.route('/').get(function (req, res) {
-
-    
     clienteController.getAll(function (result, error) {
+       
         if (error) {
             res.json(error);
         } else {
@@ -17,6 +17,7 @@ router.route('/').get(function (req, res) {
         }
     });
 });
+
 
 router.route('/get-by-id/:id').get(function (req, res) {
 
@@ -38,6 +39,8 @@ router.route('/insert').post(function (req, res){
             res.status(500);
             res.json(result.message);
         } else {
+            // Salva a Sessão no Usuário     
+            req.session.cliente = usuario;
             res.json(result);
         }
     });
@@ -74,6 +77,9 @@ router.route('/login').post(function(req, res){
             res.status(404)
             res.json(result.message);
         } else {  
+            req.session.user = result;
+            // Salva a Sessão no Usuário     
+            req.session.cliente = result;
             res.json(result);
         }
     });
@@ -87,9 +93,20 @@ router.route('/login-facebook').post(function(req, res){
             res.status(404)
             res.json(result.message);
         } else {  
+            // Salva a Sessão no Usuário     
+            req.session.cliente = usuario;
             res.json(result);
         }
     });
+
+});
+
+router.route('/logout').post(function(req, res){
+    
+    req.session.destroy(function(err) {
+        res.status(200);
+        res.json(err);
+    })
 
 });
 

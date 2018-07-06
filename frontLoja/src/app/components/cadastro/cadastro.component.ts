@@ -1,10 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../entidades/user';
 import { UsuarioService } from '../../services/user.service';
-import { error } from 'util';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { LoginOptions, LoginResponse, AuthResponse, FacebookService, InitParams } from 'ngx-facebook';
+import { Router } from '@angular/router';
 
 declare var $: any;
+
+function _window():any {
+  return window;
+}
 
 @Component({
   selector: 'app-cadastro',
@@ -19,13 +24,31 @@ export class CadastroComponent implements OnInit {
   formSignUp : FormGroup;
   formBuilderLogin: FormBuilder ;
   FormBuilderSignUp: FormBuilder;
+  fbConnect : FacebookService;
+  errorLogin: boolean;
+  errorSignUp: boolean;
 
-  constructor(private userService: UsuarioService) { 
+  constructor(private userService: UsuarioService, private fb: FacebookService, private router:Router) { 
     this.userSignIn = new User();
     this.userSignUp = new User();
     this.formBuilderLogin = new FormBuilder();
     this.FormBuilderSignUp = new FormBuilder();
-    
+    this.errorLogin = false;
+    this.errorSignUp = false;
+   
+    //Configura Conecção com a APK Facebook
+    let initParams: InitParams = {
+      appId      : '316015435599113',
+      xfbml      : true,
+      version    : 'v3.0'
+    };
+
+    // Inicia o serviço Facebook
+    fb.init(initParams);
+    this.fbConnect = fb;
+
+    // Inicializa a configuração das rotas
+   
   }
 
   ngOnInit() {
@@ -38,13 +61,15 @@ export class CadastroComponent implements OnInit {
 
     this.formSignUp = this.FormBuilderSignUp.group(
       {
-        name: [null, [Validators.required]],
+        name: [null, [Validators.required, Validators.minLength(6)]],
         email: [null, [Validators.required,  Validators.email]],
         password: [null, [Validators.required, Validators.minLength(6)]]
       });
+
+    
   }   
-
-
+  
+  //Login User 
   signInUser(){
 
     if(this.formLogin.valid){
@@ -54,9 +79,14 @@ export class CadastroComponent implements OnInit {
         (data)=>{
   
           console.log(data);
+          this.userService.userSave = data;
+          //this.router.navigateByUrl('/customize');
+          
         },
         (error)=>{
-  
+            this.errorLogin=true;
+            console.log(error);
+
         }
       );
 
@@ -64,13 +94,29 @@ export class CadastroComponent implements OnInit {
 
   }
 
+  // Login Facebook
   sigInFaceBook(){
-    
+
+    this.fbConnect.login({
+      scope: 'email , public_profile'
+    }).then((userData: any) => {
+        this.fb.api('me?fields=email,name,picture', 'get', {
+          perms: ['CREATE_CONTENT'] // get pages that the user can post to
+        }).then(
+          (res: any) => {
+            console.log(res);
+          },
+          (err: any) => console.error(err)
+        );
+      },
+      (err: any) => {
+        console.error("Error logging in with Facebook: " + err);
+      });
   }
 
+  // SignUp User 
   signUpUser(){
 
-  
     if(this.formSignUp.valid){
 
       this.userService.signUpUser(this.userSignUp)    
@@ -87,8 +133,15 @@ export class CadastroComponent implements OnInit {
     }else{
 
     };
+  }
 
-  
+  // Hide Message Error Login
+  hideMessageLogin(event: any) { 
+      this.errorLogin = false;
+  }
+  // Hide Message Error SignUp
+  hideMessageSignUp(event:any){
+    this.errorSignUp = false;
   }
 
 }
