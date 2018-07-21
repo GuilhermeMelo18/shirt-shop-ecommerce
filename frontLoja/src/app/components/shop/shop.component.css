@@ -1,3 +1,12 @@
+/* --------------------
+    CSS SHOP
+-------------------- */
+
+.shop_grid_area{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
 .button-search{
     background-color: #ff596f;
 }
@@ -141,4 +150,5 @@
         }
 
 }
+
 

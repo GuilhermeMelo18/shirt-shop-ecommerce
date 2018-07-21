@@ -4,7 +4,8 @@
 -------------------- */
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
-
+@import url('https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700');
 /* ------------------
     All CSS
 ------------------ */
@@ -16,6 +17,11 @@
 @import '../css/magnific-popup.css';
 @import '../css/animate.css';
 @import '../css/jquery-ui.min.css';
+@import '../css/morris.css';
+@import '../js/jvectormap/jquery-jvectormap-1.2.2.css';
+@import '../css/datepicker3.css';
+@import '../css/daterangepicker-bs3.css';
+@import '../css/bootstrap3-wysihtml5.min.css';
 
 /* -------------------
     Base CSS
@@ -2168,3 +2174,5 @@ Quickview Modal Area CSS
     line-height: 2;
     color: #9f9f9f;
 }
+
+

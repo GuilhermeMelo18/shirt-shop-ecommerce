@@ -10,6 +10,17 @@
 * Install npm
 * Install Angular-Cli
 * Clone Project
-* In folder project run : npm install
-* run ng serve
-* localhost:2400
+* Open folder -->> Shirt_shop_ecommerce/frontLoja/
+* In "frontLoja" folder --> Run : npm install
+* In "frontLoja" folder --> Run ng serve
+
+
+# Access Front-End Project 
+
+* Root -->>  http://localhost:4200/main
+* Customize -->>  http://localhost:4200/customize
+* Cadastro -->>  http://localhost:4200/cadastro
+* Client-Shop -->> http://localhost:4200/client-shop
+* Dashboard -->> http://localhost:4200/dashboard
+* Products -->> http://localhost:4200/product-detail
+* Shop -->> http://localhost:4200/shop

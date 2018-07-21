@@ -9,10 +9,10 @@ export class Shirt{
     shirtPriceSell: string;
     shirtGainClient : string;
     arrayTags: Array<string>;
+    qtdLikes: string;
 
     constructor(){
         this.arrayTags = new Array();
-        this.clientId = "1";
     }
 
 }

@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
 
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-6 col-lg-6">
                 <div class="single_product_thumb">
                     <div id="product_details_slider" class="carousel slide" data-ride="carousel">
 
@@ -45,36 +45,47 @@
                 </div>
             </div>
 
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-6 col-lg-6">
                 <!--Heder Information Product-->
-                <div class="single_product_desc">
+                <div class="row">
+                    <div class="single_product_desc col-6 col-md-6 col-lg-6">
 
-                    <h4 class="title">
-                        <a href="#">Long Yellow Dress</a>
-                    </h4>
+                        <h4 class="title">
+                            <a href="#">Long Yellow Dress</a>
+                        </h4>
 
-                    <h4 class="price">$ 39.99</h4>
+                        <h4 class="price">$ 39.99</h4>
 
-                    <p class="available">Disponível:
-                        <span class="text-muted">No Estoque</span>
-                    </p>
+                        <p class="available">Disponível:
+                            <span class="text-muted">No Estoque</span>
+                        </p>
 
 
-                    <form class="cart clearfix mb-50 d-flex">
-                        <div class="reader-quantity">
-                            <h6 class="price">QUANTITADE  </h6>
-                        </div>
-                        <div class="quantity">
-                            <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;">
-                                <i class="fa fa-plus" aria-hidden="true"></i>
-                            </span>
-                            <input type="number" class="qty-text" id="qty" step="1" min="1" max="6" name="quantity" value="1">
-                            <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty > 1 ) effect.value--;return false;">
-                                <i class="fa fa-minus" aria-hidden="true"></i>
-                            </span>
-                        </div>
-                    </form>
+                        <form class="cart clearfix mb-50 d-flex">
+                            <div class="reader-quantity">
+                                <h6 class="price">QUANTITADE </h6>
+                            </div>
+                            <div class="quantity">
+                                <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;">
+                                    <i class="fa fa-plus" aria-hidden="true"></i>
+                                </span>
+                                <input type="number" class="qty-text" id="qty" step="1" min="1" max="6" name="quantity" value="1">
+                                <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty > 1 ) effect.value--;return false;">
+                                    <i class="fa fa-minus" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                            <div>
+
+                            </div>
+                        </form>
+                    </div>
+                    <div class="image-user col-6 col-md-6 col-lg-6">
+                        <a href="/client-shop"><img src="../../../assets/img/core-img/perfil.jpg" alt=""> 
+                            <p class="widget-subtitle">Autor: Guilherme Melo</p>
+                        </a>
+                    </div>
                 </div>
+
                 <!--Cupom Area-->
                 <div class="coupon-code-area mt-25">
                     <div class="cart-page-heading">
@@ -87,16 +98,16 @@
                     </form>
                 </div>
 
-                 <!--Frete Area-->
-                 <div class="coupon-code-area mt-25">
-                        <div class="cart-page-heading">
-                            <h5>Calcular Frete</h5>
-                            <p>Digite seu CEP</p>
-                        </div>
-                        <form action="#">
-                            <input type="search" name="search" placeholder="569ab15">
-                            <button class="btn karl-checkout-btn">Frete</button>
-                        </form>
+                <!--Frete Area-->
+                <div class="coupon-code-area mt-25">
+                    <div class="cart-page-heading">
+                        <h5>Calcular Frete</h5>
+                        <p>Digite seu CEP</p>
+                    </div>
+                    <form action="#">
+                        <input type="search" name="search" placeholder="569ab15">
+                        <button class="btn karl-checkout-btn">Frete</button>
+                    </form>
                 </div>
                 <!--Comprar Camisa Area-->
                 <div class="cart-total-area mt-30">

@@ -1,0 +1,510 @@
+<section class="dashboard">
+
+  <div class="wrapper">
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="wrapper-content">
+
+      <div class="container">
+        <div class="row">
+
+          <!-- NAV-SIIDE-BAR -->
+          <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+            <div class="nav-side-menu">
+              <div class="brand widget-title">Minha Conta</div>
+              <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+              <div class="menu-list">
+                <ul id="menu-content" class="menu-content collapse out">
+                  <li (click)="changeScreen('RESUME')">
+                    <a href="#">
+                      <i class="fa fa-dashboard fa-lg"></i> RESUMO
+                    </a>
+                  </li>
+                  <li (click)="changeScreen('PERFIL')">
+                    <a href="#">
+                      <i class="fa fa-user fa-lg"></i> PERFIL
+                    </a>
+                  </li>
+                  <li (click)="changeScreen('PEDIDO')">
+                    <a href="#">
+                      <i class="fa fa-users fa-lg"></i> PEDIDOS
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/client-shop">
+                      <i class="fa fa-shopping-cart fa-lg"></i> MINHA LOJA
+                    </a>
+                  </li>
+                  <li (click)="changeScreen('SHIRTS')">
+                    <a href="#">
+                      <i class="fa fa-shopping-bag fa-lg"></i> MINHAS CAMISAS
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!--NAV-SIIDE-BAR-->
+
+          <!--CONTENT DASHBOARD-->
+          <div class="col-12 col-sm-12 col-md-9 col-lg-9" *ngIf="hideResumeScreen">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+              <div class="container-fluid">
+                <div class="row mb-2">
+                  <div class="col-sm-6">
+                    <h1 class="m-0 widget-title">Resumo</h1>
+                  </div>
+                  <!-- /.col -->
+                </div>
+                <!-- /.row -->
+              </div>
+              <!-- /.container-fluid -->
+            </div>
+            <!-- /.content-header -->
+
+            <!-- Main content -->
+            <section class="content">
+              <div class="container-fluid">
+                <!-- Small boxes (Stat box) -->
+                <div class="row">
+                  <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-info">
+                      <div class="inner">
+                        <h3>150</h3>
+
+                        <p>Pedidos</p>
+                      </div>
+                      <div class="icon">
+                        <i class="ion ion-bag"></i>
+                      </div>
+                      <a href="#" class="small-box-footer">Mais Informações
+                        <i class="fa fa-arrow-circle-right"></i>
+                      </a>
+                    </div>
+                  </div>
+                  <!-- ./col -->
+                  <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-success">
+                      <div class="inner">
+                        <h3>53
+                          <sup style="font-size: 20px">R$</sup>
+                        </h3>
+
+                        <p>Renda</p>
+                      </div>
+                      <div class="icon">
+                        <i class="ion ion-social-usd"></i>
+                      </div>
+                      <a href="#" class="small-box-footer">Mais Informações
+                        <i class="fa fa-arrow-circle-right"></i>
+                      </a>
+                    </div>
+                  </div>
+                  <!-- ./col -->
+                  <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-secondary">
+                      <div class="inner">
+                        <h3>44</h3>
+
+                        <p>Visualizações</p>
+                      </div>
+                      <div class="icon">
+                        <i class="ion ion-android-contacts"></i>
+                      </div>
+                      <a href="#" class="small-box-footer">Mais Informações
+                        <i class="fa fa-arrow-circle-right"></i>
+                      </a>
+                    </div>
+                  </div>
+                  <!-- ./col -->
+                  <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-danger">
+                      <div class="inner">
+                        <h3>65</h3>
+
+                        <p>Curtidas</p>
+                      </div>
+                      <div class="icon">
+                        <i class="ion ion-ios-heart"></i>
+                      </div>
+                      <a href="#" class="small-box-footer">Mais Informações
+                        <i class="fa fa-arrow-circle-right"></i>
+                      </a>
+                    </div>
+                  </div>
+                  <!-- ./col -->
+                </div>
+                <!-- /.row -->
+                <!-- Main row -->
+                <div class="row">
+                  <!-- Left col -->
+                  <section class="col-lg-7 connectedSortable">
+                    <!-- Custom tabs (Charts with tabs)-->
+                    <div class="card">
+                      <div class="card-header d-flex p-0">
+                        <h3 class="card-title p-3">
+                          <i class="fa fa-pie-chart mr-1"></i>
+                          Vendas
+                        </h3>
+                        <ul class="nav nav-pills ml-auto p-2">
+                          <li class="nav-item">
+                            <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
+                          </li>
+                        </ul>
+                      </div>
+                      <!-- /.card-header -->
+                      <div class="card-body">
+                        <div class="tab-content p-0">
+                          <!-- Morris chart - Sales -->
+                          <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 290px;"></div>
+                          <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;"></div>
+                        </div>
+                      </div>
+                      <!-- /.card-body -->
+                    </div>
+                  </section>
+                  <!-- /.Left col -->
+                  <!-- right col (We are only adding the ID to make the widgets sortable)-->
+                  <section class="col-lg-5 connectedSortable">
+
+                    <!-- Map card -->
+                    <div class="card bg-primary-gradient">
+                      <div class="card-header no-border">
+                        <h3 class="card-title">
+                          <i class="fa fa-map-marker mr-1"></i>
+                          Visitas
+                        </h3>
+                        <!-- card tools -->
+                        <div class="card-tools">
+                          <button type="button" class="btn btn-primary btn-sm daterange" data-toggle="tooltip" title="Date range">
+                            <i class="fa fa-calendar"></i>
+                          </button>
+                          <button type="button" class="btn btn-primary btn-sm" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                            <i class="fa fa-minus"></i>
+                          </button>
+                        </div>
+                        <!-- /.card-tools -->
+                      </div>
+                      <div class="card-body">
+                        <div id="world-map" style="height: 250px; width: 100%;"></div>
+                      </div>
+                      <!-- /.card-body-->
+                      <div class="card-footer bg-transparent">
+                        <div class="row">
+                          <div class="col-4 text-center">
+                            <div id="sparkline-1"></div>
+                            <div class="text-white">Visitors</div>
+                          </div>
+                          <!-- ./col -->
+                          <div class="col-4 text-center">
+                            <div id="sparkline-2"></div>
+                            <div class="text-white">Online</div>
+                          </div>
+                          <!-- ./col -->
+                          <div class="col-4 text-center">
+                            <div id="sparkline-3"></div>
+                            <div class="text-white">Sales</div>
+                          </div>
+                          <!-- ./col -->
+                        </div>
+                        <!-- /.row -->
+                      </div>
+                    </div>
+                    <!-- /.card -->
+                    <!-- /.card -->
+                  </section>
+                  <!-- right col -->
+                </div>
+                <!-- /.row (main row) -->
+              </div>
+              <!-- /.container-fluid -->
+            </section>
+            <!-- /.content -->
+          </div>
+          <!-- END CONTENT DASHBOARD-->
+
+          <!-- PEDIDOS -->
+          <div class="col-12 col-sm-12 col-md-9 col-lg-9" *ngIf="hidePedidosScreen">
+            <div class="card">
+              <div class="card-header border-transparent">
+                <h3 class="card-title">PEDIDOS</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-widget="remove">
+                    <i class="fa fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body p-0">
+                <div class="table-responsive">
+                  <table class="table m-0">
+                    <thead>
+                      <tr>
+                        <th>Ordem ID</th>
+                        <th>Item</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <a href="pages/examples/invoice.html">OR9842</a>
+                        </td>
+                        <td>Call of Duty IV</td>
+                        <td>
+                          <span class="badge badge-success">Shipped</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <a href="pages/examples/invoice.html">OR1848</a>
+                        </td>
+                        <td>Samsung Smart TV</td>
+                        <td>
+                          <span class="badge badge-warning">Pending</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <a href="pages/examples/invoice.html">OR7429</a>
+                        </td>
+                        <td>iPhone 6 Plus</td>
+                        <td>
+                          <span class="badge badge-danger">Delivered</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <a href="pages/examples/invoice.html">OR7429</a>
+                        </td>
+                        <td>Samsung Smart TV</td>
+                        <td>
+                          <span class="badge badge-info">Processing</span>
+                        </td>
+
+                      </tr>
+                      <tr>
+                        <td>
+                          <a href="pages/examples/invoice.html">OR1848</a>
+                        </td>
+                        <td>Samsung Smart TV</td>
+                        <td>
+                          <span class="badge badge-warning">Pending</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <a href="pages/examples/invoice.html">OR7429</a>
+                        </td>
+                        <td>iPhone 6 Plus</td>
+                        <td>
+                          <span class="badge badge-danger">Delivered</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <a href="pages/examples/invoice.html">OR9842</a>
+                        </td>
+                        <td>Call of Duty IV</td>
+                        <td>
+                          <span class="badge badge-success">Shipped</span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.table-responsive -->
+              </div>
+              <!-- /.card-body -->
+              <div class="card-footer clearfix">
+                <a href="/dashboard" class="btn btn-sm btn-info float-left">Novo Pedido</a>
+                <a href="/dashboard" class="btn btn-sm btn-secondary float-right">Todos Pedidos</a>
+              </div>
+              <!-- /.card-footer -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!--END PEDIDOS -->
+
+          <!-- PRODUCT LIST -->
+          <div class="col-12 col-sm-12 col-md-9 col-lg-9" *ngIf="hideMyShirtsScreen">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">SEUS PRODUTOS</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-widget="remove">
+                    <i class="fa fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body p-0">
+                <ul class="products-list product-list-in-card pl-2 pr-2">
+                  <li class="item">
+                    <div class="product-img">
+                      <img src="../../../assets/img/amostra-shirt/grey-shirt-girl.png" alt="Product Image" class="img-size-50">
+                    </div>
+                    <div class="product-info">
+                      <div class="product-title">Shirt 1
+                        <button type="button" class="btn float-right btn-primary btn-sm">Alterar</button>
+                        <button type="button" class="btn float-right btn-danger btn-sm">Excluir</button>
+                        <span class="badge badge-warning float-right">R$1800</span>
+                      </div>
+                      <span class="product-description">
+                        Descrição
+                      </span>
+                    </div>
+                  </li>
+                  <!-- /.item -->
+                  <li class="item">
+                    <div class="product-img">
+                      <img src="../../../assets/img/amostra-shirt/black-shirt-man.png" alt="Product Image" class="img-size-50">
+                    </div>
+                    <div class="product-info">
+                      <div class="product-title">Shirt 2
+                        <button type="button" class="btn float-right btn-primary btn-sm">Alterar</button>
+                        <button type="button" class="btn float-right btn-danger btn-sm">Excluir</button>
+                        <span class="badge badge-info float-right">R$700</span>
+                      </div>
+                      <span class="product-description">
+                        Descrição
+                      </span>
+                    </div>
+                  </li>
+                  <!-- /.item -->
+                  <li class="item">
+                    <div class="product-img">
+                      <img src="../../../assets/img/amostra-shirt/orange-shirt-man.png" alt="Product Image" class="img-size-50">
+                    </div>
+                    <div class="product-info">
+                      <div href="#" class="product-title">
+                        Shirt 3
+                        <button type="button" class="btn float-right btn-primary btn-sm">Alterar</button>
+                        <button type="button" class="btn float-right btn-danger btn-sm">Excluir</button>
+                        <span class="badge badge-danger float-right">
+                          R$350
+                        </span>
+                      </div>
+                      <span class="product-description">
+                        Descrição
+                      </span>
+                    </div>
+                  </li>
+                  <!-- /.item -->
+                  <li class="item">
+                    <div class="product-img">
+                      <img src="../../../assets/img/amostra-shirt/red-shirt-man.png" alt="Product Image" class="img-size-50">
+                    </div>
+                    <div class="product-info">
+                      <div href="#" class="product-title">Shirt 4
+                        <button type="button" class="btn float-right btn-primary btn-sm">Alterar</button>
+                        <button type="button" class="btn float-right btn-danger btn-sm">Excluir</button>
+                        <span class="badge badge-success float-right">R$399</span>
+                      </div>
+                      <span class="product-description ">
+                        Shit 4
+                      </span>
+                    </div>
+                  </li>
+                  <!-- /.item -->
+                </ul>
+              </div>
+              <!-- /.card-body -->
+              <div class="card-footer text-center uppercase">
+                Todos Produtos
+              </div>
+              <!-- /.card-footer -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- END PRODUCT LIST -->
+
+          <div class="col-12 col-sm-12 col-md-9 col-lg-9" *ngIf="hidePerfilScreen">
+            <div class="row">
+              <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="widget size">
+                  <h6 class="widget-title">Mudar Imagem Perfil</h6>
+                  <label class="fileContainer">
+                    <p class="widget-subtitle">Clique ou Arraste para enviar sua imagem.</p>
+                    <input type="file" (change)="readImagePerfilClient($event)" />
+                  </label>
+                  <p *ngIf="userModified.imageUser"><img src={{userModified.imageUser}} alt=""></p>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="widget size">
+                  <h6 class="widget-title">Mudar Imagem Capa</h6>
+                  <label class="fileContainer">
+                    <p class="widget-subtitle">Clique ou Arraste para enviar sua imagem.</p>
+                    <input type="file" (change)="readImageCapa($event)" />
+                  </label>
+                  <p *ngIf="userModified.imageSite"><img src={{userModified.imageSite}} alt=""></p>
+                </div>
+              </div>
+            </div>
+            <!--End row-->
+
+            <div class="row">
+              <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+                <div class="widget size">
+                  <h6 class="widget-title">Mudar Nome</h6>
+                  <input [(ngModel)]="userModified.nameUser" type="text" class="titleShirt" />
+                </div>
+              </div>
+              <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+                <div class="widget size">
+                  <h6 class="widget-title">Mudar Email</h6>
+                  <input [(ngModel)]="userModified.email" type="email" class="titleShirt" />
+                </div>
+              </div>
+              <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+                <div class="widget size">
+                  <h6 class="widget-title">Mudar Senha</h6>
+                  <input [(ngModel)]="userModified.password" type="password" class="titleShirt" />
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+
+              <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="widget size">
+                  <h6 class="widget-title">Mudar Descrição Perfil</h6>
+                  <textarea rows="2" cols="40" maxlength="92" class="titleShirt" [(ngModel)]="userModified.description"></textarea>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                  <div class="widget size">
+                    <button class="btn button-send-shirt mt-50" (click)="atualizarPerfil()">Atualizar</button>
+                  </div>
+              </div>
+            </div>
+            
+          </div>
+          <!--End Container-->
+
+        </div>
+      </div>
+
+    </div>
+    <!-- /.content-wrapper -->
+
+  </div>
+  <!-- ./wrapper -->
+</section>

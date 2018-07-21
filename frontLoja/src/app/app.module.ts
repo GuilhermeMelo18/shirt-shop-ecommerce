@@ -10,6 +10,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 
 //Services
 import { UsuarioService } from './services/user.service';
+import { ShirtService } from './services/shirt.service';
 
 //Routing
 import { RouterModule, Routes } from '@angular/router';
@@ -22,6 +23,8 @@ import { CadastroComponent } from './components/cadastro/cadastro.component';
 import { CustomizeComponent } from './components/customize/customize.component';
 import { ShopComponent } from './components/shop/shop.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { ClientShopComponent } from './components/client-shop/client-shop.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 
 @NgModule({
@@ -33,7 +36,9 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
     CadastroComponent,
     CustomizeComponent,
     ShopComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    ClientShopComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +49,7 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
     FacebookModule.forRoot(),
     NgxPaginationModule
   ],
-  providers: [UsuarioService],
+  providers: [UsuarioService, ShirtService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
