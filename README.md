@@ -12,7 +12,7 @@
 * Clone Project
 * Open folder -->> Shirt_shop_ecommerce/frontLoja/
 * In "frontLoja" folder --> Run : npm install
-* In "frontLoja" folder --> Run ng serve
+* In "frontLoja" folder --> Run: ng serve
 
 
 # Access Front-End Project 
