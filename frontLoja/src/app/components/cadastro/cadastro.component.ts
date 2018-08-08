@@ -79,8 +79,10 @@ export class CadastroComponent implements OnInit {
         (data)=>{
   
           console.log(data);
+          
           this.userService.userSave = data;
-          //this.router.navigateByUrl('/customize');
+          this.errorLogin=false;
+          this.router.navigateByUrl('/shop');
           
         },
         (error)=>{
@@ -123,10 +125,13 @@ export class CadastroComponent implements OnInit {
       .subscribe(
         (data)=>{
           console.log(data);
+          this.errorSignUp = false;
+          this.router.navigateByUrl('/shop');
         },
         (error)=>{
   
           console.log(error);
+          this.errorSignUp = true;
         }
       );
 

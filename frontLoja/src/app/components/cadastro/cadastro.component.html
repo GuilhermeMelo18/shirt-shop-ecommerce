@@ -30,7 +30,9 @@
                               <input type="password" data-minlength="6" class="form-control"  [(ngModel)]="userSignUp.password" formControlName="password" name="passwordUser" id="inputPassword" placeholder="Password" required>
                               <div class="help-block" style="color: red; font-size: 15px;">Mínimo 6 caracteres</div>
                             </div>
-
+                            <div *ngIf="errorSignUp" class="message-error-login">
+                                Cadastro Não Realizado - Tente Mais Tarde
+                            </div>
                             <div class="form-group col-12 mb-3">
                               <button type="submit" class="btn button-cadastro mt-30" (click)="signUpUser()">Cadastrar</button>
                             </div>

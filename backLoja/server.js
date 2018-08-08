@@ -11,6 +11,8 @@
 var express     = require('express'); //chamando o pacote express
 var app         = express(); //definção da nossa aplicação através do express
 var bodyParser  = require('body-parser');  //chamando o pacote body-parser
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
  
 /** Configuração da variável 'app' para usar o 'bodyParser()'.
  * Ao fazermos isso nos permitirá retornar os dados a partir de um POST
@@ -90,6 +92,6 @@ router.use(function(req, res, next) {
 /* Todas as nossas rotas serão prefixadas com '/api' */
 app.use('/api', router);
 app.use('/api/users', require('./app/routers/usuario'));
-app.use('/api/camisas', require('./app/routers/camisas'))
+app.use('/api/shirts', require('./app/routers/camisas'))
 
 

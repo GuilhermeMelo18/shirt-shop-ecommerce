@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UsuarioService } from '../../services/user.service';
 
 declare var $: any;
 
@@ -12,8 +13,9 @@ export class ShopComponent implements OnInit {
   collectionShirt =[];
   documentReady = false;
 
-  constructor() {
+  constructor(private userService: UsuarioService) {
 
+    
   }
 
   ngOnInit() {

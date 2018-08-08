@@ -7,6 +7,7 @@ import { User } from '../entidades/user';
 @Injectable()
 export class UsuarioService {
 
+  // User Session
   userSave: User;
 
   constructor(private http: HttpClient) {
@@ -15,6 +16,11 @@ export class UsuarioService {
 
   getUserById(id:string):Observable<User>{
     return this.http.get<User>("http://localhost:8000/api/users/get-by-id/"+id)
+    .pipe(error=>error);
+  }
+
+  getUserSession():Observable<User>{
+    return this.http.get<User>("http://localhost:8000/api/users/get-session")
     .pipe(error=>error);
   }
 

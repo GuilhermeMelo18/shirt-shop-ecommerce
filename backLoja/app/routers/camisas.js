@@ -5,14 +5,31 @@ var Shirt = require('../models/shirt');
 
 var ClienteController = require('../controllers/usuario');
 var clienteController = new ClienteController();
-var Shirt = 
+
+var ShirtController = require('../controllers/shirt');
+var shirtController = new ShirtController();
+
 
 router.route('/').get(function (req, res) {
 
-    clienteController.getAll(function (result, error) {
+    shirtController.getAll(function (result, error) {
         if (error) {
             res.json(new Shirt());
         } else {
+            res.json(result);
+        }
+    });
+});
+
+router.route('/insert').post(function (req, res){
+    
+    shirtController.insert(req.body, function (result, error) {
+        if (result instanceof Error) {
+            res.status(500);
+            res.json(result.message);
+        } else {
+            // Salva a Sessão no Usuário     
+            // req.session.cliente = result;
             res.json(result);
         }
     });

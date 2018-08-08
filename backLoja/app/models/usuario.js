@@ -8,8 +8,11 @@ var UsuarioSchema = new Schema({
     imageUser: String,
     imageSite: String,
     description: String,
-    city: String,
-    country: String,
+    cep: String,
+    totalGain: String,
+    totalGainByMoth : [String],
+    totalviewsPage : String,
+    totalLikesPage: String,
     listBag: [{shirtId: {type: Schema.Types.ObjectId, ref:'shirt'}, statusVenda: Boolean}]
 
 });
