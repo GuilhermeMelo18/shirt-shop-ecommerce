@@ -30,14 +30,19 @@
                       <i class="fa fa-users fa-lg"></i> PEDIDOS
                     </a>
                   </li>
-                  <li>
-                    <a href="/client-shop">
+                  <li (click)="goToShopClient()">
+                    <a href="#">
                       <i class="fa fa-shopping-cart fa-lg"></i> MINHA LOJA
                     </a>
                   </li>
                   <li (click)="changeScreen('SHIRTS')">
                     <a href="#">
                       <i class="fa fa-shopping-bag fa-lg"></i> MINHAS CAMISAS
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/customize">
+                      <i class="fa fa-plus fa-lg"></i> ADICIONAR CAMISA
                     </a>
                   </li>
                 </ul>
@@ -72,14 +77,14 @@
                     <!-- small box -->
                     <div class="small-box bg-info">
                       <div class="inner">
-                        <h3>150</h3>
+                        <h3>{{purchasesDemandsByUser.length}}</h3>
 
                         <p>Pedidos</p>
                       </div>
                       <div class="icon">
                         <i class="ion ion-bag"></i>
                       </div>
-                      <a href="#" class="small-box-footer">Mais Informações
+                      <a href="#" class="small-box-footer" (click)="changeScreen('PEDIDO')">Mais Informações
                         <i class="fa fa-arrow-circle-right"></i>
                       </a>
                     </div>
@@ -89,7 +94,7 @@
                     <!-- small box -->
                     <div class="small-box bg-success">
                       <div class="inner">
-                        <h3>53
+                        <h3>{{userlikesGain.gain}}
                           <sup style="font-size: 20px">R$</sup>
                         </h3>
 
@@ -108,7 +113,7 @@
                     <!-- small box -->
                     <div class="small-box bg-secondary">
                       <div class="inner">
-                        <h3>44</h3>
+                        <h3>15</h3>
 
                         <p>Visualizações</p>
                       </div>
@@ -125,7 +130,7 @@
                     <!-- small box -->
                     <div class="small-box bg-danger">
                       <div class="inner">
-                        <h3>65</h3>
+                        <h3>{{userlikesGain.likes}}</h3>
 
                         <p>Curtidas</p>
                       </div>
@@ -254,72 +259,25 @@
                       <tr>
                         <th>Ordem ID</th>
                         <th>Item</th>
+                        <th>Preço Total</th>
+                        <th>Quantidade</th>
                         <th>Status</th>
                       </tr>
                     </thead>
-                    <tbody>
-                      <tr>
+                    <tbody >
+                      <tr *ngFor="let item of purchasesDemandsByUser">
                         <td>
-                          <a href="pages/examples/invoice.html">OR9842</a>
+                          {{item._id}}
                         </td>
-                        <td>Call of Duty IV</td>
+                        <td>{{item.shirtName}}</td>
                         <td>
-                          <span class="badge badge-success">Shipped</span>
+                          {{item.totalPrice}} R$
                         </td>
-                      </tr>
-                      <tr>
                         <td>
-                          <a href="pages/examples/invoice.html">OR1848</a>
+                          {{item.qtdShirts}}
                         </td>
-                        <td>Samsung Smart TV</td>
                         <td>
-                          <span class="badge badge-warning">Pending</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <a href="pages/examples/invoice.html">OR7429</a>
-                        </td>
-                        <td>iPhone 6 Plus</td>
-                        <td>
-                          <span class="badge badge-danger">Delivered</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <a href="pages/examples/invoice.html">OR7429</a>
-                        </td>
-                        <td>Samsung Smart TV</td>
-                        <td>
-                          <span class="badge badge-info">Processing</span>
-                        </td>
-
-                      </tr>
-                      <tr>
-                        <td>
-                          <a href="pages/examples/invoice.html">OR1848</a>
-                        </td>
-                        <td>Samsung Smart TV</td>
-                        <td>
-                          <span class="badge badge-warning">Pending</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <a href="pages/examples/invoice.html">OR7429</a>
-                        </td>
-                        <td>iPhone 6 Plus</td>
-                        <td>
-                          <span class="badge badge-danger">Delivered</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <a href="pages/examples/invoice.html">OR9842</a>
-                        </td>
-                        <td>Call of Duty IV</td>
-                        <td>
-                          <span class="badge badge-success">Shipped</span>
+                          <span class="badge badge-success">Realizado</span>
                         </td>
                       </tr>
                     </tbody>
@@ -329,8 +287,8 @@
               </div>
               <!-- /.card-body -->
               <div class="card-footer clearfix">
-                <a href="/dashboard" class="btn btn-sm btn-info float-left">Novo Pedido</a>
-                <a href="/dashboard" class="btn btn-sm btn-secondary float-right">Todos Pedidos</a>
+                <div class="btn btn-sm btn-info float-left">Novo Pedido</div>
+                <div class="btn btn-sm btn-secondary float-right">Todos Pedidos</div>
               </div>
               <!-- /.card-footer -->
             </div>
@@ -356,73 +314,20 @@
               <!-- /.card-header -->
               <div class="card-body p-0">
                 <ul class="products-list product-list-in-card pl-2 pr-2">
-                  <li class="item">
+                  <li class="item" *ngFor="let item of shirtByIdClient">
                     <div class="product-img">
-                      <img src="../../../assets/img/amostra-shirt/grey-shirt-girl.png" alt="Product Image" class="img-size-50">
+                      <img src="{{item.imgShirt}}" alt="Product Image" class="img-size-50">
                     </div>
                     <div class="product-info">
-                      <div class="product-title">Shirt 1
-                        <button type="button" class="btn float-right btn-primary btn-sm">Alterar</button>
-                        <button type="button" class="btn float-right btn-danger btn-sm">Excluir</button>
-                        <span class="badge badge-warning float-right">R$1800</span>
+                      <div class="product-title">{{item.titleShirt}}
+                        <button type="button" class="btn float-right btn-danger btn-sm" (click)="removeShirt(item._id)">Excluir</button>
+                        <span class="badge badge-warning float-right">{{item.shirtPriceSell}} R$</span>
                       </div>
                       <span class="product-description">
-                        Descrição
+                        <i class="fa fa-thumbs-o-up"></i> {{item.qtdLikes }} Curtidas
                       </span>
                     </div>
                   </li>
-                  <!-- /.item -->
-                  <li class="item">
-                    <div class="product-img">
-                      <img src="../../../assets/img/amostra-shirt/black-shirt-man.png" alt="Product Image" class="img-size-50">
-                    </div>
-                    <div class="product-info">
-                      <div class="product-title">Shirt 2
-                        <button type="button" class="btn float-right btn-primary btn-sm">Alterar</button>
-                        <button type="button" class="btn float-right btn-danger btn-sm">Excluir</button>
-                        <span class="badge badge-info float-right">R$700</span>
-                      </div>
-                      <span class="product-description">
-                        Descrição
-                      </span>
-                    </div>
-                  </li>
-                  <!-- /.item -->
-                  <li class="item">
-                    <div class="product-img">
-                      <img src="../../../assets/img/amostra-shirt/orange-shirt-man.png" alt="Product Image" class="img-size-50">
-                    </div>
-                    <div class="product-info">
-                      <div href="#" class="product-title">
-                        Shirt 3
-                        <button type="button" class="btn float-right btn-primary btn-sm">Alterar</button>
-                        <button type="button" class="btn float-right btn-danger btn-sm">Excluir</button>
-                        <span class="badge badge-danger float-right">
-                          R$350
-                        </span>
-                      </div>
-                      <span class="product-description">
-                        Descrição
-                      </span>
-                    </div>
-                  </li>
-                  <!-- /.item -->
-                  <li class="item">
-                    <div class="product-img">
-                      <img src="../../../assets/img/amostra-shirt/red-shirt-man.png" alt="Product Image" class="img-size-50">
-                    </div>
-                    <div class="product-info">
-                      <div href="#" class="product-title">Shirt 4
-                        <button type="button" class="btn float-right btn-primary btn-sm">Alterar</button>
-                        <button type="button" class="btn float-right btn-danger btn-sm">Excluir</button>
-                        <span class="badge badge-success float-right">R$399</span>
-                      </div>
-                      <span class="product-description ">
-                        Shit 4
-                      </span>
-                    </div>
-                  </li>
-                  <!-- /.item -->
                 </ul>
               </div>
               <!-- /.card-body -->

@@ -1208,6 +1208,7 @@ Quickview Modal Area CSS
     font-weight: 700;
     color: #ff084e;
     display: block;
+    cursor: pointer;
 }
 
 .product-description .add-to-cart-btn:hover {

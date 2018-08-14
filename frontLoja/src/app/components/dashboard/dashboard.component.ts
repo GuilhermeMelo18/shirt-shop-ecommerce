@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../entidades/user';
 import { FormBuilder } from '../../../../node_modules/@angular/forms';
+import { UsuarioService } from '../../services/user.service';
+import { PurchaseService } from '../../services/purchase.service';
+import { ShirtService } from '../../services/shirt.service';
 declare var $: any;
 
 @Component({
@@ -15,14 +18,21 @@ export class DashboardComponent implements OnInit {
   hidePerfilScreen: Boolean;
   hidePedidosScreen: Boolean;
   hideMyShirtsScreen: Boolean;
- 
+
+  // Variables Purchases Demands
+  purchasesDemandsByUser: any;
+
 
   //Variables Change Client
   userModified: User;
+  shirtByIdClient : any;
+  userlikesGain : any;
 
-  constructor() {
-      this.userModified = new User();
-   }
+
+  constructor(private userService: UsuarioService, private purchaseService: PurchaseService,
+    private shirtService: ShirtService) {
+    this.userModified = new User();
+  }
 
   ngOnInit() {
 
@@ -32,6 +42,50 @@ export class DashboardComponent implements OnInit {
     this.hidePedidosScreen = false;
     this.hideMyShirtsScreen = false;
 
+    this.userService.getUserSession()
+      .subscribe(
+        (data) => {
+          this.userModified = data[0];
+
+          // Get All Demands By User  
+          this.purchaseService.getAllDemandsByUser(this.userModified._id)
+            .subscribe(
+              (data) => {
+                this.purchasesDemandsByUser = data;
+              },
+              (error) => {
+                console.log(error);
+              }
+            );
+
+          // Get All Shirts By User
+          this.shirtService.getShirtByIdUser(this.userModified._id)
+            .subscribe(
+              (data) => {
+                this.shirtByIdClient = data;
+              },
+              (error) => {
+                console.log(error);
+              }
+            );
+           // Get All Shirts By User
+           this.userService.getUserLikesGain(this.userModified._id)
+           .subscribe(
+             (data) => {
+               this.userlikesGain = data;
+             },
+             (error) => {
+               console.log(error);
+             }
+           );
+        },
+        (error) => {
+          console.log(error);
+          //this.router.navigateByUrl('/cadastro');
+          window.location.href = "/cadastro";
+          alert("Necessário fazer o Login na Sua Conta");
+        }
+      );
   }
 
   //Change Screen Dash Board
@@ -98,8 +152,54 @@ export class DashboardComponent implements OnInit {
   }
 
   // Atualizar Perfil Usuário
-  atualizarPerfil(){
+  atualizarPerfil() {
 
-    console.log(this.userModified);
+    this.userService.updateUser(this.userModified._id, this.userModified)
+      .subscribe(
+        (data) => {
+          console.log(data);
+          alert("Perfil Atualizado com Sucesso !");
+          window.location.href = "/dashboard";
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
+
+  // Go to Shop Client
+  goToShopClient() {
+
+    if (this.userModified._id != undefined) {
+
+      this.userService.getUserById(this.userModified._id)
+        .subscribe(
+          (data) => {
+            //this.router.navigateByUrl('/shop');
+            window.location.href = "/client-shop";
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+    }
+
+  }
+
+  // Remove User Shirt
+  removeShirt(id : string){
+    this.shirtService.removeShirt(id)
+    .subscribe(
+      (data) => {
+        console.log(data);
+        alert("Camisa Removida com Sucesso !");
+        window.location.href = "/dashboard";
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  } 
+
+
 }

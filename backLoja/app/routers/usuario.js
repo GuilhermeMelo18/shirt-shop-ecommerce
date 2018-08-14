@@ -6,6 +6,8 @@ var clienteController = new ClienteController();
 
 // ClientSession
 var clienteSession =  undefined;
+// ClientLoja
+var clienteLoja = undefined;
 
 router.route('/').get(function (req, res) {
     clienteController.getAll(function (result, error) {
@@ -31,6 +33,18 @@ router.route('/get-session').get(function (req, res) {
 
 });
 
+router.route('/get-user-shop').get(function (req, res) {
+    
+    if (clienteLoja == undefined) {
+        res.status(404);
+        res.json("User Don't Found");
+    } else {
+        res.status(200);
+        // MISS User Password
+        res.json(clienteLoja);
+    }
+
+});
 
 router.route('/get-by-id/:id').get(function (req, res) {
 
@@ -42,6 +56,21 @@ router.route('/get-by-id/:id').get(function (req, res) {
         } else {
             // Miss User Password
             result.password = undefined;
+            // Save User Loja 
+            clienteLoja = result;
+            res.json(result);
+        }
+    });
+});
+
+router.route('/get-likes-gain/:id').get(function (req, res) {
+
+    
+    clienteController.getAllLikesGain(req.params.id, function (result, error) {
+        if (result instanceof Error) {
+            res.status(404);
+            res.json(result.message);
+        } else {
             res.json(result);
         }
     });
@@ -54,10 +83,10 @@ router.route('/insert').post(function (req, res){
             res.status(500);
             res.json(result.message);
         } else {
-            // Salva a Sessão no Usuário     
-           // req.session.cliente = result;
-            // Miss User Password
-            result.password = undefined;
+            var client = [];
+            client.push(result);
+            clienteSession = client;   
+            //console.log(clienteSession);
             res.json(result);
         }
     });
@@ -70,8 +99,9 @@ router.route('/update/:id').post(function (req, res) {
             res.status(404);
             res.json(result.message);
         } else {
-            // Miss User Password
-            result.password = undefined;
+            var client = [];
+            client.push(req.body);
+            clienteSession = client;
             res.json(result);
         }
     });
@@ -113,9 +143,9 @@ router.route('/login-facebook').post(function(req, res){
         if (result instanceof Error) {
             res.status(404);
             res.json(result.message);
-        } else {  
+        } else {       
             // Salva a Sessão no Usuário     
-            //req.session.cliente = usuario;
+            clienteSession = result;
             // Miss User Password
             result.password = undefined;
             res.json(result);
@@ -124,12 +154,12 @@ router.route('/login-facebook').post(function(req, res){
 
 });
 
-router.route('/logout').post(function(req, res){
+router.route('/logout').get(function(req, res){
     
-    req.session.destroy(function(err) {
-        res.status(200);
-        res.json(err);
-    })
+    // Salva a Sessão no Usuário     
+    clienteSession = undefined;
+
+    res.json("Client Logout");
 
 });
 

@@ -5,7 +5,7 @@ import { UtilShirt } from '../../entidades/utilShirt';
 import { UsuarioService } from '../../services/user.service';
 import * as html2canvas from "html2canvas";
 import { User } from '../../entidades/user';
-import { Router } from '../../../../node_modules/@angular/router';
+import { Router } from '@angular/router';
 import { ShirtService } from '../../services/shirt.service';
 
 declare var $: any;
@@ -28,7 +28,7 @@ export class CustomizeComponent implements OnInit {
   userSignIn: User;
 
   constructor(private clientServise: UsuarioService, private userService: UsuarioService,
-    private router: Router, private shirtService :ShirtService) {
+    private router: Router, private shirtService: ShirtService) {
 
     this.shirtClass = new Shirt();
     this.utilShirt = new UtilShirt();
@@ -39,24 +39,9 @@ export class CustomizeComponent implements OnInit {
     this.shirtModelImage = this.utilShirt.IMG_MODEL_MAN;
     this.shirtClass.colorShirt = this.utilShirt.COLOR_WHITE;
 
-
   }
 
   ngOnInit() {
-
-    //Verify User Login
-    this.userService.getUserSession()
-      .subscribe(
-        (data) => {
-          this.userSignIn = data;
-        },
-        (error) => {
-          
-          this.router.navigateByUrl('/cadastro');
-          alert("Necessário fazer o Login na Sua Conta");
-        }
-      );
-    // End Verify User Login
 
     //Content Class
     let _content = this;
@@ -167,40 +152,56 @@ export class CustomizeComponent implements OnInit {
 
     let _content = this;
 
-    // Add ID Author Shirt
-    this.shirtClass.clientId = this.userSignIn[0]._id;
-    
     html2canvas(document.getElementById("wrapper-image"), { logging: false, async: false }).then(function (canvas) {
       _content.shirtClass.imgShirt = canvas.toDataURL();
     });
 
-    this.utilShirt.optionsTags.forEach(element => {
-      if (element.checked == true) {
-        this.shirtClass.arrayTags.push(element.tag);
-      }
-    });
-    console.log(this.shirtClass);
+    console.log(this.shirtClass.imgShirt);
+
+    if (this.shirtClass.imgShirt != undefined) {
+      this.utilShirt.optionsTags.forEach(element => {
+        if (element.checked == true) {
+          this.shirtClass.arrayTags.push(element.tag);
+        }
+      });
+    }
 
     if (this.shirtClass.imgShirt != undefined &&
-      this.shirtClass.clientId != undefined &&
       this.shirtClass.colorShirt != undefined &&
       this.shirtClass.imgPicture != undefined &&
       this.shirtClass.modelShirt != undefined &&
       this.shirtClass.titleShirt != undefined &&
       this.shirtClass.arrayTags.length > 0) {
-       
-        // Service Shirt
-      this.shirtService.saveShirt(this.shirtClass)
-      .subscribe(
-        (data)=>{
-          //console.log(data);
-          this.router.navigateByUrl('/client-shop');
-        },
-        (error)=>{
-          //console.log(error);
-          this.messageCampos = "Serviço indisponível - Tente mais tarde";
-        }
-      );
+
+      //Verify User Login
+      this.userService.getUserSession()
+        .subscribe(
+          (data) => {
+            // Add ID Author Shirt
+            this.shirtClass.clientId = data[0]._id;
+            this.shirtClass.qtdLikes = "0";
+
+            // Service Shirt
+            this.shirtService.saveShirt(this.shirtClass)
+              .subscribe(
+                (data) => {
+                  window.location.href = "/shop";
+                },
+                (error) => {
+                  console.log(error);
+                  this.messageCampos = "Serviço indisponível - Tente mais tarde";
+                }
+              );
+
+          },
+          (error) => {
+
+            //this.router.navigateByUrl('/cadastro');
+            window.location.href = "/cadastro";
+            alert("Necessário fazer o Login na Sua Conta");
+          }
+        );
+      // End Verify User Login
 
     } else {
 
@@ -208,7 +209,7 @@ export class CustomizeComponent implements OnInit {
         this.messageCampos = "Envie sua Estampa";
       } else if (this.shirtClass.titleShirt == undefined) {
         this.messageCampos = "Escreva um título para sua Camisa";
-      } else if (this.shirtClass.arrayTags.length == 0) {
+      } else if (this.shirtClass.arrayTags.length == 0 && this.shirtClass.imgShirt != undefined) {
         this.messageCampos = "Selecione ao Menos uma Categoria";
       }
     }

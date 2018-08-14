@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     'use strict';
-
+    
     var $window = $(window);
 
     //Fullscreen Active Code

@@ -1,5 +1,6 @@
 export class Shirt{
-
+    
+    _id : string;
     clientId: string;
     titleShirt: string;
     modelShirt: string;

@@ -83,6 +83,7 @@ position: absolute;
 top: -10%;
 left: 8%;
 padding: 70px;
+cursor: pointer;
 }
 
 .hovereffect:hover a.info {

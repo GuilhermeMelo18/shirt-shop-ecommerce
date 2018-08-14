@@ -11,6 +11,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 //Services
 import { UsuarioService } from './services/user.service';
 import { ShirtService } from './services/shirt.service';
+import { PurchaseService } from './services/purchase.service';
+
 
 //Routing
 import { RouterModule, Routes } from '@angular/router';
@@ -49,7 +51,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     FacebookModule.forRoot(),
     NgxPaginationModule
   ],
-  providers: [UsuarioService, ShirtService],
+  providers: [UsuarioService, ShirtService, PurchaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

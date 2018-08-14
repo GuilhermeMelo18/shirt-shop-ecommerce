@@ -8,36 +8,21 @@
                     <div id="product_details_slider" class="carousel slide" data-ride="carousel">
 
                         <ol class="carousel-indicators">
-                            <li class="active" data-target="#product_details_slider" data-slide-to="0" style="background-image: url(../../../assets/img/amostra-shirt/black-shirt-girl.png);">
+                            <li class="active" data-target="#product_details_slider" data-slide-to="0" [ngStyle]="{'background-image': 'url(' + this.shirtPresentation.imgShirt + ')'}">
                             </li>
-                            <li data-target="#product_details_slider" data-slide-to="1" style="background-image: url(../../../assets/img/amostra-shirt/black-shirt-girl.png);">
+                            <li data-target="#product_details_slider" data-slide-to="1" [ngStyle]="{'background-image': 'url(' + this.shirtPresentation.imgPicture + ')'}">
                             </li>
-                            <li data-target="#product_details_slider" data-slide-to="2" style="background-image: url(../../../assets/img/amostra-shirt/black-shirt-girl.png);">
-                            </li>
-                            <li data-target="#product_details_slider" data-slide-to="3" style="background-image: url(../../../assets/img/amostra-shirt/black-shirt-girl.png);">
-                            </li>
-
                         </ol>
 
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <a class="gallery_img" href="../../../assets/img/amostra-shirt/black-shirt-girl.png">
-                                    <img class="d-block w-100" src="../../../assets/img/amostra-shirt/black-shirt-girl.png" alt="First slide">
+                            <div class="carousel-item active item-car">
+                                <a class="gallery_img" href="">
+                                    <img class="d-block w-100" src="{{shirtPresentation.imgShirt}}" alt="First slide">
                                 </a>
                             </div>
-                            <div class="carousel-item">
-                                <a class="gallery_img" href="../../../assets/img/amostra-shirt/black-shirt-girl.png">
-                                    <img class="d-block w-100" src="../../../assets/img/amostra-shirt/black-shirt-girl.png" alt="Second slide">
-                                </a>
-                            </div>
-                            <div class="carousel-item">
-                                <a class="gallery_img" href="../../../assets/img/amostra-shirt/black-shirt-girl.png">
-                                    <img class="d-block w-100" src="../../../assets/img/amostra-shirt/black-shirt-girl.png" alt="Third slide">
-                                </a>
-                            </div>
-                            <div class="carousel-item">
-                                <a class="gallery_img" href="../../../assets/img/amostra-shirt/black-shirt-girl.png">
-                                    <img class="d-block w-100" src="../../../assets/img/amostra-shirt/black-shirt-girl.png" alt="Fourth slide">
+                            <div class="carousel-item item-car">
+                                <a class="gallery_img" href="">
+                                    <img class="d-block w-100" src="{{shirtPresentation.imgPicture}}" alt="Second slide">
                                 </a>
                             </div>
                         </div>
@@ -51,10 +36,10 @@
                     <div class="single_product_desc col-6 col-md-6 col-lg-6">
 
                         <h4 class="title">
-                            <a href="#">Long Yellow Dress</a>
+                            <a href="#">{{shirtPresentation.titleShirt}}</a>
                         </h4>
 
-                        <h4 class="price">$ 39.99</h4>
+                        <h4 class="price">{{shirtPresentation.shirtPriceSell}} R$</h4>
 
                         <p class="available">Disponível:
                             <span class="text-muted">No Estoque</span>
@@ -69,7 +54,7 @@
                                 <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;">
                                     <i class="fa fa-plus" aria-hidden="true"></i>
                                 </span>
-                                <input type="number" class="qty-text" id="qty" step="1" min="1" max="6" name="quantity" value="1">
+                                <input type="number" class="qty-text" id="qty" step="1" min="1" max="6" name="quantity" value="1" [(ngModel)]="purchase.qtdShirts">
                                 <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty > 1 ) effect.value--;return false;">
                                     <i class="fa fa-minus" aria-hidden="true"></i>
                                 </span>
@@ -79,9 +64,10 @@
                             </div>
                         </form>
                     </div>
-                    <div class="image-user col-6 col-md-6 col-lg-6">
-                        <a href="/client-shop"><img src="../../../assets/img/core-img/perfil.jpg" alt=""> 
-                            <p class="widget-subtitle">Autor: Guilherme Melo</p>
+                    <div class="image-user col-6 col-md-6 col-lg-6" (click)="goToShopClient()">
+                        <a>
+                            <img src="{{this.userPresentation.imageUser}}" alt="">
+                            <p class="widget-subtitle">Autor : {{userPresentation.nameUser}}</p>
                         </a>
                     </div>
                 </div>
@@ -93,8 +79,8 @@
                         <p>Digite seu cupom de desconto</p>
                     </div>
                     <form action="#">
-                        <input type="search" name="search" placeholder="569ab15">
-                        <button class="btn karl-checkout-btn">Ok</button>
+                        <input type="search" name="search" placeholder="DES10" [(ngModel)]="cupom">
+                        <button class="btn karl-checkout-btn" (click)="getCupom()">Ok</button>
                     </form>
                 </div>
 
@@ -105,8 +91,8 @@
                         <p>Digite seu CEP</p>
                     </div>
                     <form action="#">
-                        <input type="search" name="search" placeholder="569ab15">
-                        <button class="btn karl-checkout-btn">Frete</button>
+                        <input type="search" name="search" placeholder="569ab15" [(ngModel)]="cep">
+                        <button class="btn karl-checkout-btn" (click)="getFrete()">Frete</button>
                     </form>
                 </div>
                 <!--Comprar Camisa Area-->
@@ -119,26 +105,26 @@
                     <ul class="cart-total-chart">
                         <li>
                             <span>Subtotal</span>
-                            <span>$59.90</span>
+                            <span>{{shirtPresentation.shirtPriceSell}} R$</span>
                         </li>
                         <li>
                             <span>Frete</span>
-                            <span>Free</span>
+                            <span>{{purchase.priceDelivery}} R$</span>
                         </li>
                         <li>
                             <span>Cupom Desconto</span>
-                            <span>Free</span>
+                            <span>{{purchase.discount}} R$</span>
                         </li>
                         <li>
                             <span>
                                 <strong>Total</strong>
                             </span>
                             <span>
-                                <strong>$59.90</strong>
+                                <strong>{{purchase.totalPrice}} R$</strong>
                             </span>
                         </li>
                     </ul>
-                    <a href="checkout.html" class="btn karl-checkout-btn">Finalizar Compra</a>
+                    <a href="#" class="btn karl-checkout-btn" (click)="finishBuy()">Finalizar Compra</a>
                 </div>
 
             </div>
@@ -158,94 +144,23 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12">
-                <div class="you_make_like_slider owl-carousel">
-
-                    <!-- Single gallery Item -->
-                    <div class="single_gallery_item">
-                        <!-- Product Image -->
-                        <div class="product-img">
-                            <img src="../../../assets/img/amostra-shirt/black-shirt-girl.png" alt="">
-                            <div class="product-quicview">
-                                <a href="#" data-toggle="modal" data-target="#quickview">
-                                    <i class="ti-plus"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <!-- Product Description -->
-                        <div class="product-description">
-                            <h4 class="product-price">$39.90</h4>
-                            <p>Jeans midi cocktail dress</p>
-                            <!-- COMPRAR -->
-                            <a href="#" class="add-to-cart-btn">COMPRAR</a>
-                        </div>
+            <!-- Single gallery Item -->
+            <div class="single_gallery_item col-12 col-sm-3 col-lg-3" *ngFor="let item of sliderBag">
+                <!-- Product Image -->
+                <div class="product-img" (click)="changeShirtBag(item)">
+                    <img src="{{item.shirt.imgShirt}}" alt="">
+                    <div class="product-quicview">
+                        <a href="#" data-toggle="modal" data-target="#quickview">
+                            <i class="ti-plus"></i>
+                        </a>
                     </div>
-
-
-                    <!-- Single gallery Item -->
-                    <div class="single_gallery_item">
-                        <!-- Product Image -->
-                        <div class="product-img">
-                            <img src="../../../assets/img/amostra-shirt/black-shirt-girl.png" alt="">
-                            <div class="product-quicview">
-                                <a href="#" data-toggle="modal" data-target="#quickview">
-                                    <i class="ti-plus"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <!-- Product Description -->
-                        <div class="product-description">
-                            <h4 class="product-price">$39.90</h4>
-                            <p>Jeans midi cocktail dress</p>
-                            <!-- COMPRAR -->
-                            <a href="#" class="add-to-cart-btn">COMPRAR</a>
-                        </div>
-                    </div>
-
-
-                    <!-- Single gallery Item -->
-                    <div class="single_gallery_item">
-                        <!-- Product Image -->
-                        <div class="product-img">
-                            <img src="../../../assets/img/amostra-shirt/black-shirt-girl.png" alt="">
-                            <div class="product-quicview">
-                                <a href="#" data-toggle="modal" data-target="#quickview">
-                                    <i class="ti-plus"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <!-- Product Description -->
-                        <div class="product-description">
-                            <h4 class="product-price">$39.90</h4>
-                            <p>Jeans midi cocktail dress</p>
-                            <!-- COMPRAR -->
-                            <a href="#" class="add-to-cart-btn">COMPRAR</a>
-                        </div>
-                    </div>
-
-
-                    <!-- Single gallery Item -->
-                    <div class="single_gallery_item">
-                        <!-- Product Image -->
-                        <div class="product-img">
-                            <img src="../../../assets/img/amostra-shirt/black-shirt-girl.png" alt="">
-                            <div class="product-quicview">
-                                <a href="#" data-toggle="modal" data-target="#quickview">
-                                    <i class="ti-plus"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <!-- Product Description -->
-                        <div class="product-description">
-                            <h4 class="product-price">$39.90</h4>
-                            <p>Jeans midi cocktail dress</p>
-                            <!-- COMPRAR -->
-                            <a href="#" class="add-to-cart-btn"></a>
-                        </div>
-                    </div>
-
-
-
+                </div>
+                <!-- Product Description -->
+                <div class="product-description">
+                    <h4 class="product-price">{{item.shirt.shirtPriceSell}} R$</h4>
+                    <p>{{item.shirt.titleShirt}}</p>
+                    <!-- COMPRAR -->
+                    <div class="add-to-cart-btn" (click)="changeShirtBag(item)">COMPRAR</div>
                 </div>
             </div>
         </div>

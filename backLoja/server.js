@@ -92,6 +92,6 @@ router.use(function(req, res, next) {
 /* Todas as nossas rotas serão prefixadas com '/api' */
 app.use('/api', router);
 app.use('/api/users', require('./app/routers/usuario'));
-app.use('/api/shirts', require('./app/routers/camisas'))
-
+app.use('/api/shirts', require('./app/routers/camisas'));
+app.use('/api/purchases', require('./app/routers/purchase'));
 

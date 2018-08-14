@@ -20,6 +20,7 @@
 }
 
 .image-user{
+    cursor: pointer;
 }
 
 .image-user a img{
@@ -31,6 +32,11 @@
 }
 .image-user .widget-subtitle{
     margin-left: 62px;
+}
+
+.item-car{
+    height: 700px;
+    max-height: 700px;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1200px) {

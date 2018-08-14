@@ -37,7 +37,7 @@ export class UtilShirt{
     optionsTags = [
           {name:'Geek', value:'#f0f8ff', checked:false, tag:'GEEK'},
           {name:'Esporte', value:'#92b0b3', checked:false, tag:'SPORT'},
-          {name:'Musica', value:'#f0f8ff', checked:false, tag:'MUSIC'},
+          {name:'Música', value:'#f0f8ff', checked:false, tag:'MUSIC'},
           {name:'Pets', value:'#92b0b3', checked:false, tag:'PET'},
           {name:'Artística', value:'#f0f8ff', checked:false, tag:'ART'},
           {name:'Frases', value:'#92b0b3', checked:false, tag:'PHRASE'},

@@ -1,4 +1,5 @@
 var User = require('../models/usuario');
+var Shirt = require('../models/shirt')
 var Functions = require('../util/functions');
 
 function ClienteController() {
@@ -24,6 +25,25 @@ ClienteController.prototype.getById = function(id, callback) {
             callback(new Error("User dont Founded"));
         } else {
             callback(result);
+        }
+    });
+};
+
+ClienteController.prototype.getAllLikesGain = function(id, callback) {
+    
+    Shirt.find({clientAuthorId : id}, function (error, result) {
+        if (error) {
+            callback(new Error("User dont Founded"));
+        } else {
+
+            var likesByUser = 0;
+            var gainUser = 0;
+            
+            result.forEach(element => {
+                likesByUser = likesByUser + parseFloat(element.qtdLikes);
+                gainUser = gainUser + parseFloat(element.shirtGainClient);
+            });
+            callback({likes : likesByUser , gain : gainUser});
         }
     });
 };
@@ -90,14 +110,7 @@ ClienteController.prototype.loginFacebook = function(req, callback){
 
 ClienteController.prototype.update = function(id, req , callback){
 
-    var user = new usuario();
-    user.email = req.email;
-    user.password = req.password;
-    user.nameUser = req.nameUser;
-    user.imageUser = req.imageUser;
-    user.imageSite = req.imageSite;
-
-    User.findByIdAndUpdate(id, user, function(error,user){
+    User.findByIdAndUpdate(id, req, function(error,user){
 
         if(error){
             callback(new Error('Error Server - Update User'));

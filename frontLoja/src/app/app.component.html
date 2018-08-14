@@ -8,15 +8,15 @@
     <div class="nav-side-menu">
         <div class="menu-list">
             <div class="img-icon-menu">
-                <img src="{{user.imageUser}}" alt="">
+                <img src="{{this.userSignIn.imageUser}}" alt="">
             </div>
-            <h6>{{user.nameUser}}</h6>
+            <h6>{{this.userSignIn.nameUser}}</h6>
             <div class="list-info-user">
                 <ul>
-                    <li><a href="client-shop">Sua Loja</a></li>
-                    <li><a href="dashboard">Configurações</a></li>
+                    <li (click)="goToShopClient()"><a href="#">Sua Loja</a></li>
+                    <li><a href="/dashboard">Configurações</a></li>
                 </ul>
-                <button class="btn btn-sair">SAIR</button>
+                <button class="btn btn-sair" (click)="logOutUser()" >SAIR</button>
             </div>
         </div>
     </div>

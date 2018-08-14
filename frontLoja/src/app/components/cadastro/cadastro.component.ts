@@ -82,7 +82,8 @@ export class CadastroComponent implements OnInit {
           
           this.userService.userSave = data;
           this.errorLogin=false;
-          this.router.navigateByUrl('/shop');
+          //this.router.navigateByUrl('/shop');
+          window.location.href = "/shop";
           
         },
         (error)=>{
@@ -126,7 +127,8 @@ export class CadastroComponent implements OnInit {
         (data)=>{
           console.log(data);
           this.errorSignUp = false;
-          this.router.navigateByUrl('/shop');
+         // this.router.navigateByUrl('/shop');
+         window.location.href = "/shop";
         },
         (error)=>{
   
