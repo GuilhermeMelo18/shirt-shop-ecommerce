@@ -2,10 +2,11 @@
  Ecommerce where users can build their store and sell their customized shirts.
  
 * Front End : HTML5, CSS3, Bootstrap,JQueqy, Angular2.
-* Back End : NodeJS, MongoDB. 
+* Back End : NodeJS + Express, MongoDB + Mongoose. 
 
 
-# Run Project
+# Run Front-End
+
 * Install node
 * Install npm
 * Install Angular-Cli
@@ -14,6 +15,17 @@
 * In "frontLoja" folder --> Run : npm install
 * In "frontLoja" folder --> Run: ng serve
 
+# Run Back-End
+
+* Install mongoDB
+* Install mongoDB Compass Community
+* Import -->> C:\Program Files\MongoDB\Server\3.6\bin , to environment variables
+* Run "mongod" in command prompt -->> Connections on port 27017
+* Connect Compass to mongoDB port 27017
+* Create Database "admin"
+* Go to  Shirt_shop_ecommerce/backLoja
+* In "backLoja" folder --> Run : npm install
+* In "backLoja" folder --> Run: node server.js
 
 # Access Front-End Project 
 
