@@ -9,6 +9,7 @@ var clienteSession =  undefined;
 // ClientLoja
 var clienteLoja = undefined;
 
+// Get All Users
 router.route('/').get(function (req, res) {
     clienteController.getAll(function (result, error) {
 
@@ -19,7 +20,7 @@ router.route('/').get(function (req, res) {
         }
     });
 });
-
+// Get Session Users
 router.route('/get-session').get(function (req, res) {
     
     if (clienteSession == undefined) {
@@ -32,7 +33,7 @@ router.route('/get-session').get(function (req, res) {
     }
 
 });
-
+// Get User from Shop Page 
 router.route('/get-user-shop').get(function (req, res) {
     
     if (clienteLoja == undefined) {
@@ -45,7 +46,7 @@ router.route('/get-user-shop').get(function (req, res) {
     }
 
 });
-
+// Get User By Id
 router.route('/get-by-id/:id').get(function (req, res) {
 
     
@@ -62,7 +63,7 @@ router.route('/get-by-id/:id').get(function (req, res) {
         }
     });
 });
-
+// Get Total User Likes and Gains
 router.route('/get-likes-gain/:id').get(function (req, res) {
 
     
@@ -75,7 +76,7 @@ router.route('/get-likes-gain/:id').get(function (req, res) {
         }
     });
 });
-
+// Inset new User
 router.route('/insert').post(function (req, res){
     
     clienteController.insert(req.body, function (result, error) {
@@ -91,7 +92,7 @@ router.route('/insert').post(function (req, res){
         }
     });
 });
-
+// Update User By ID
 router.route('/update/:id').post(function (req, res) {
 
     clienteController.update(req.params.id, req.body, function (result, error) {
@@ -106,7 +107,7 @@ router.route('/update/:id').post(function (req, res) {
         }
     });
 });
-
+// Remove User By ID
 router.route('/remove/:id').post(function (req, res) {
 
     clienteController.remove(req.params.id, function (result, error) {
@@ -118,7 +119,7 @@ router.route('/remove/:id').post(function (req, res) {
         }
     });
 });
-
+// User Login 
 router.route('/login').post(function(req, res){
 
     clienteController.login(req.body, function(result, error){
@@ -136,7 +137,7 @@ router.route('/login').post(function(req, res){
     });
 
 });
-
+// User Facebook Login
 router.route('/login-facebook').post(function(req, res){
 
     clienteController.loginFacebook(req.body, function(result, error){
@@ -153,7 +154,7 @@ router.route('/login-facebook').post(function(req, res){
     });
 
 });
-
+//User Logout
 router.route('/logout').get(function(req, res){
     
     // Salva a Sessão no Usuário     
