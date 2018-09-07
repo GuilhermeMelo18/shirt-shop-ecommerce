@@ -31,7 +31,7 @@
 
 * Root -->>  http://localhost:4200/main
 * Customize -->>  http://localhost:4200/customize
-* Cadastro -->>  http://localhost:4200/cadastro
+* Sign Up -->>  http://localhost:4200/cadastro
 * Client-Shop -->> http://localhost:4200/client-shop
 * Dashboard -->> http://localhost:4200/dashboard
 * Products -->> http://localhost:4200/product-detail
