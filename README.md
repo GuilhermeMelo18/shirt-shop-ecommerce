@@ -4,6 +4,7 @@
 * Front End : HTML5, CSS3, Bootstrap,JQueqy, Angular2.
 * Back End : NodeJS + Express, MongoDB + Mongoose. 
 
+<img src="https://image.ibb.co/kzNB4K/42962317_937331383126582_4231188075331452928_n.png" alt="combate3" border="0" style="text-align:center;">
 
 # Run Front-End
 
