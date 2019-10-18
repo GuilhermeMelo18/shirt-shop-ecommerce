@@ -20,7 +20,7 @@
 
 * Install mongoDB
 * Install mongoDB Compass Community
-* Import -->> C:\Program Files\MongoDB\Server\"version"\bin , to environment variables
+* Import -->> C:\Program Files\MongoDB\Server\version\bin , to environment variables
 * Run "mongod" in command prompt -->> Connections on port 27017
 * Connect Compass to mongoDB port 27017
 * Create Database "admin"
